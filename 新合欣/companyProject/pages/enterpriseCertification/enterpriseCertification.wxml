@@ -1,0 +1,128 @@
+<no_saerch_nav page-name="企业认证" showback>
+</no_saerch_nav>
+<!-- 未认证 -->
+<view class="contain">
+  <view wx:if="{{enterpriseCertificationStatus==2}}">
+    <view class="top_contain">
+      <view class="top_img_contain">
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line" style="background-color:rgb(112,173,70)"></view>
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line"></view>
+        <image class="top_img" src="/images/graydot.png"></image>
+
+      </view>
+
+
+      <view class="top_text_contain">
+        <text>认证</text>
+        <text>审核</text>
+        <text>通过</text>
+      </view>
+      <view class="content">
+        <image src="/images/fail.png" style="width:10vw;height:10vw"></image>
+        审核未通过!
+        <button bindtap="restart" style="line-height:2;background-color:rgb(53,148,34);border:none;width:60vw;margin-top:2vw;color:white">重新上传材料</button>
+      </view>
+    </view>
+    
+  </view>
+  <form bindsubmit="apply" wx:if="{{enterpriseCertificationStatus==-1}}" style="display:flex;flex-direction:column">
+    <view class="top_contain">
+      <view class="top_img_contain">
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line"></view>
+        <image class="top_img" src="/images/graydot.png"></image>
+        <view class="top_line"></view>
+        <image class="top_img" src="/images/graydot.png"></image>
+      </view>
+      <view class="top_text_contain">
+        <text>认证</text>
+        <text>审核</text>
+        <text>通过</text>
+      </view>
+    </view>
+    <view style="font-size:3.5vw;color:gray;margin:2vw 3vw;width:94vw">请输入企业真实资料用于认证</view>
+    <view class="form_contain">
+      <view class="form_row">
+        <view class="form_name">企业名称</view>
+        <input name="companyName" placeholder="请输入企业名称" placeholder-class="placeholder_style" class="input_style"></input>
+      </view>
+      <view class="form_row">
+        <view class="form_name">企业注册号</view>
+        <input name="registerNumber" placeholder="如无可填写社会信用代码" placeholder-class="placeholder_style" class="input_style"></input>
+      </view>
+      <view class="form_row">
+        <view class="form_name">法人姓名</view>
+        <input name="peopleName" placeholder-class="placeholder_style" placeholder="请输入法人姓名" class="input_style"></input>
+      </view>
+      <view class="form_row">
+        <view class="form_name">法人身份证号</view>
+        <input name="idCard" placeholder="请输入法人身份证号" placeholder-class="placeholder_style" class="input_style"></input>
+      </view>
+    </view>
+    <!-- 协议 -->
+    <checkbox-group style="display:flex;flex-direction:row;background-color: rgb(243, 243, 243);align-items: center;justify-content:baseline" bindchange="checkchange">
+      <checkbox style="padding:4vw 0 4vw 3vw;font-size: 4vw;line-height:0">我同意
+
+      </checkbox>
+      <text style="color:rgb(80,80,249);margin:4vw 0 4vw 0vw;font-size: 4vw;line-height:0" bindtap="toAgreement">互客拼吧认证协议</text>
+    </checkbox-group>
+    <view style="background-color: rgb(243, 243, 243)">
+      <button form-type="submit" disabled="{{disablebutton}}" type="primary" style="border-radius:8px;width:94vw">立即提交</button>
+    </view>
+    <view style="height:100vw;background-color:rgb(243, 243, 243);width:100vw"></view>
+  </form>
+
+
+  <!-- 审核中 -->
+  <view wx:if="{{enterpriseCertificationStatus==0}}" class="big_content">
+    <view class="top_contain">
+      <view class="top_img_contain">
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line" style="background-color:rgb(112,173,70)"></view>
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line"></view>
+        <image class="top_img" src="/images/graydot.png"></image>
+
+      </view>
+
+
+      <view class="top_text_contain">
+        <text>认证</text>
+        <text>审核</text>
+        <text>通过</text>
+      </view>
+    </view>
+    <view class="content">
+      <image src="/images/shenheicon.png" class="big_icon"></image>
+      正在审核中!
+    </view>
+  </view>
+  <!-- 认证成功 -->
+  <view wx:if="{{enterpriseCertificationStatus==1}}">
+
+    <view class="top_contain">
+      <view class="top_img_contain">
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line" style="background-color:rgb(112,173,70)"></view>
+        <image class="top_img" src="/images/greendot.png"></image>
+        <view class="top_line" style="background-color:rgb(112,173,70)"></view>
+        <image class="top_img" src="/images/greendot.png"></image>
+
+      </view>
+
+
+      <view class="top_text_contain">
+        <text>认证</text>
+        <text>审核</text>
+        <text>通过</text>
+      </view>
+    </view>
+    <view class="content">
+      <image src="/images/shenhepass.png" class="big_icon"></image>
+      恭喜认证通过!
+    </view>
+  </view>
+
+</view>

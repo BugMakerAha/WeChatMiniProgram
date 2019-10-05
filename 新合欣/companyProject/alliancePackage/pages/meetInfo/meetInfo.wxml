@@ -1,0 +1,113 @@
+<!--pages/activityInfo/activityInfo.wxml-->
+<view class='contain'>
+  <no_saerch_nav page-name="私董会详情" showback="{{true}}"></no_saerch_nav>
+  <view>
+    <image src="/images/right-top.png" class="bianjiao" animation="{{topbianjiaoAnimation}}" style="right:0;z-index:1;margin-top:-1px"></image>
+  </view>
+  <view style="flex:1;height:0;position:relative">
+    <scroll-view bindscrolltoupper="refresh" bindscroll="mainscroll" scroll-y style='height:100%'>
+      <image src="/images/left-bottom.png" class="bianjiao" style="z-index:1;position:absolute;margin: 50vw 0 0 0;"></image>
+
+      <swiper style="width:100vw;height:55vw;position:relative;z-index:0">
+        <block wx:for="{{activity_detail.activity_img}}">
+          <swiper-item>
+            <image data-index="{{index}}" bindtap="preview" src="{{item}}" mode="aspectFill" class="top_image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <view class='head head_text'>
+        <image src='{{activity_detail.user_avatarUrl}}' class='head_image'></image>
+        <view class='head_item_right'>
+          <view>发起人：{{activity_detail.activity_leader}}</view>
+          <view class="head_right_bottom">
+            <view class="head_right_icontext">
+              <image wx:if="{{activity_detail.activity_verified != 0}}" src="/images/verified.png" class="head_right_icon"></image>
+              <view wx:if="{{activity_detail.activity_verified != 0}}" class="head_right_bottom_text">昱奢共享联盟</view>
+            </view>
+            <view class="head_right_icontext">
+              <image wx:if="{{activity_detail.activity_verified == 2}}" src="/images/verified_yellow.png" class="head_right_icon"></image>
+              <view wx:if="{{activity_detail.activity_verified == 2}}" class="head_right_bottom_text">二级会员</view>
+              <image wx:if="{{activity_detail.activity_verified == 1}}" src="/images/verified_blue.png" class="head_right_icon"></image>
+              <view wx:if="{{activity_detail.activity_verified == 1}}" class="head_right_bottom_text">一级会员</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='body body_text'>
+        <view class="body_func_box">
+          <view class='body_func_contain'>
+            <view class='body_func_item  first'>
+              <image src="/images/qiandao.png" class="body_func_img"></image>
+              <view class=' body_fun_text'>我要签到</view>
+            </view>
+            <view bindtap="toactivityPhoto" class='body_func_item'>
+              <image src="/images/photoshare.png" class="body_func_img" style="width:5.5vw;height:5vw"></image>
+              <view class=' body_fun_text'>活动照片</view>
+            </view>
+          </view>
+        </view>
+        <view class='body_item'>活动标题：{{activity_detail.activity_title}}</view>
+        <view class='body_item'>活动人数：{{activity_detail.activity_population}}人
+          <progress background-color="#c4e0b0" activeColor="#548235" stroke-width="10" percent='{{activity_detail.activity_present_population/activity_detail.activity_population*100}}' class="body_progress"></progress>{{activity_detail.activity_present_population}}/{{activity_detail.activity_population}}
+        </view>
+        <view class='body_item'>拼团成员：
+          <scroll-view scroll-x style="width:0vw;flex:1">
+            <view style="display:flex;flex-direction:row;width:max-content">
+              <block wx:for="{{persons}}">
+                <image style='background-color:green;width:10vw;height:10vw;border-radius: 50%;margin-left:2vw' src='{{item.member_icon}}'></image>
+              </block>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="body_item">报名时间：{{activity_detail.activity_start_date}} 前</view>
+        <view class='body_item'>开始时间：{{activity_detail.activity_date}} {{activity_detail.activity_time}}</view>
+        <view class='body_item'> 结束时间：{{activity_detail.activity_date_deadline}} {{activity_detail.activity_time_deadline}}</view>
+        <view class='body_item'>集合地点：{{activity_detail.activity_adress}}</view>
+
+
+        <!-- 额外标签栏 -->
+        <block wx:for="{{activity_detail.activity_describe}}" wx:if="{{item.title!=''&&item.content!=''&&item.status}}">
+          <view class="body_item">{{item.title}}：{{item.content}}
+          </view>
+        </block>
+
+        
+      </view>
+      <view class="body_item" style="display:flex;flex-direction:column;align-items:center">
+        <view style="padding: 0 3vw;olor: gray;font-size:3.5vw;border-bottom:1px solid #dfdfdf;margin-top:1vw">
+          活动介绍
+        </view>
+        <editor id="editor2" class="ql-container" read-only bindready="oneditorready"></editor>
+        
+      </view>
+    </scroll-view>
+  </view>
+  <view class='foot'>
+    <view class='foot_item_left'>
+      <view class="foot_item" >
+        <image src="{{collected?'/images/collected.png':'/images/uncollected.png'}}" class="foot_item_img"></image>
+        收藏
+      </view>
+      <view class="foot_item">
+        <image src="/images/laren.png" class="foot_item_img" style="width: 7vw;height: 7vw;"></image>
+        <button class="sharebutton">帮忙拉人</button>
+      </view>
+      <image src="/images/xx.png" style="position:absolute;width:8vw;height:12vw;margin-left: 29vw;"></image>
+    </view>
+    <view bindtap="apply" data-activityid="{{activity_id}}" class='foot_item_right'>{{apply_state}}</view>
+  </view>
+</view>
+
+<!-- show modal-->
+<view class="modal-mask" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view style="display:flex;align-items:center">
+    <image class="icon" mode='widthFix' src="/images/greendot.png"></image>
+    <view style="color:gray;font-size:4vw;margin-left:3vw">昱奢高级玩家</view>
+  </view>
+  <view style="font-size:4vw;padding-bottom: 1vw;margin: 2vw 2vw 1vw 2vw;border-bottom:1px solid gray">昱奢高级玩家联合各界知名商团为高端玩家量身打造一个优质的活动信息整合平台</view>
+  <view style="font-size:3.5vw;color:gray;margin-bottom:4vw;margin-left:2vw">只为尊享，我们不将就</view>
+  <button bindgetuserinfo="login" open-type="getUserInfo" class="loginbutton">请先登录</button>
+
+</view>

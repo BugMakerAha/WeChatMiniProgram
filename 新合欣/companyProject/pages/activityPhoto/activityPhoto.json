@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "no_saerch_nav": "../../component/no_saerch_nav"
+  },
+  "disableScroll": true,
+  "navigationBarTitleText": "现场照片"
+}

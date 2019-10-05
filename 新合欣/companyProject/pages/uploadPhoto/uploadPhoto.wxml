@@ -1,0 +1,36 @@
+<no_saerch_nav showback page-name="现场照片">
+</no_saerch_nav>
+<view class="contain">
+  <view class="top">
+    <view bindtap="getPhoto" wx:if="{{canAddPhoto}}" style="width:20vw;height:14vw;display:flex;flex-direction:row;justify-content:center;align-items:center;background-color:whitesmoke;border-radius:5px">
+      <image src="/images/camera.png" class="camera"></image>
+    </view>
+    <view style="color:gray; margin:1vw 0;font-size:3.5vw">{{tips}}</view>
+  </view>
+  <view wx:if="{{showsubmit}}" class="submit_contain">
+    <image  bindtap="uploadimg" class="submit" mode="widthFix" src="/images/complete_apply.png"></image>
+  </view>
+  <view class="content">
+
+    <view class="image_contain" style="position:absolute">
+
+      <block wx:for="{{tempPhotoPaths}}">
+        <view class="image_item">
+
+          <image class="img" src="{{item}}"></image>
+        </view>
+      </block>
+
+    </view>
+    <view class="image_contain" style="position:absolute;z-index:99">
+      <view class="bigmask" wx:if="{{showbigmask}}" bindtap="closedelete"></view>
+      <block wx:for="{{tempPhotoPath}}">
+        <view class="image_item">
+          <view wx:if="{{showmask}}" class="mask"></view>
+          <image wx:if="{{showclose}}" class="close" src="/images/close2.png" bindtap="deletePhoto" data-index="{{index}}"></image>
+          <image bindlongpress="showclose" class="img" src="{{item}}" mode="aspectFill" bindtap="preview" data-index="{{index}}"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

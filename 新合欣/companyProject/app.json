@@ -1,0 +1,97 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/activityInfo/activityInfo",
+    "pages/publishActivity/publishActivity",
+    "pages/sortActivity/sortActivity",
+    "pages/activityApply/activityApply",
+    "pages/agreement/agreement",
+    "pages/myActivity/myActivity",
+    "pages/feedBack/feedBack",
+    "pages/uploadPhoto/uploadPhoto",
+    "pages/myMessage/myMessage",
+    "pages/messageInfo/messageInfo",
+    "pages/myCollection/myCollection",
+    "pages/officialGroup/officialGroup",
+    "pages/previewActivity/previewActivity",
+    "pages/enterpriseCertification/enterpriseCertification",
+    "pages/sortUser/sortUser",
+    "pages/userAgreement/userAgreement",
+    "pages/creativeCandidate/creativeCandidate",
+    "pages/unionCooperation/unionCooperation",
+    "pages/shiningDash/shiningDash",
+    "pages/activityEditor/activityEditor",
+    "pages/payForAlliance/payForAlliance",
+    "pages/personalCertification/personalCertification"
+  ],
+  "subpackages": [
+    {
+      "root": "alliancePackage",
+      "pages": [
+        "pages/allianceArea/allianceArea",
+        "pages/allianceIntroduction/allianceIntroduction",
+        "pages/programInfo/programInfo",
+        "pages/resourceInfo/resourceInfo",
+        "pages/logoInfo/logoInfo",
+        "pages/publishResource/publishResource",
+        "pages/publishLogo/publishLogo",
+        "pages/publishMoney/publishMoney",
+        "pages/meetInfo/meetInfo",
+        "pages/publishMeet/publishMeet"
+      ]
+    },
+    {
+      "root": "highPlayerPackage",
+      "pages": [
+        "pages/highPlayer/highPlayer",
+        "pages/playerArea/playerArea",
+        "pages/publishHighPlayerActivity/publishHighPlayerActivity",
+        "pages/highActivityInfo/highActivityInfo",
+        "pages/messages/messages"
+      ]
+    }
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于查看附近的活动"
+    }
+  },
+  "usingComponents": {
+    "search": "../../component/search"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#359422",
+    "enablePullDownRefresh": false,
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "大厅",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home..png"
+      },
+      {
+        "pagePath": "pages/sortUser/sortUser",
+        "iconPath": "/images/addActivities.png",
+        "text": "发起活动",
+        "selectedIconPath": "/images/addActivities..png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/profile.png",
+        "selectedIconPath": "/images/profile..png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wxac6cdbc6c652d8f1"
+  ],
+  "workers": "workers"
+}

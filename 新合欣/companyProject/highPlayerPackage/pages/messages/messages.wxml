@@ -1,0 +1,105 @@
+<no_saerch_nav page-name="我的消息" showback></no_saerch_nav>
+<view class='contain'>
+
+  <view class='tapbar'>
+    <view class="tapbar_item" data-current='0' bindtap="swichNav">
+      <!-- <image src="/images/joinmessage.png" class="tapbar_item_img"></image> -->
+      <text class="text_top {{swipeIndex==0 ? 'on' : ''}}">我的申请</text>
+    </view>
+    <view class="tapbar_item" data-current='1' bindtap="swichNav">
+      <!-- <image src="/images/joinmessage.png" class="tapbar_item_img"></image> -->
+      <text class="text_top {{swipeIndex==1 ? 'on' : ''}}">我参加的</text>
+    </view>
+    <view wx:if="{{canPublish}}" class="tapbar_item" data-current='2' bindtap="swichNav">
+      <!-- <image src="/images/joinmessage.png" class="tapbar_item_img"></image> -->
+      <text class="text_top {{swipeIndex==2 ? 'on' : ''}}">入团申请</text>
+    </view>
+    <view wx:if="{{canPublish}}" class="tapbar_item" data-current='3' bindtap="swichNav">
+      <!-- <image src="/images/joinmessage.png" class="tapbar_item_img"></image> -->
+      <text class="text_top {{swipeIndex==3 ? 'on' : ''}}">我发布的</text>
+    </view>
+    
+  </view>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
+   
+<!-- 我的申请 -->
+    <swiper-item>
+      <scroll-view scroll-y style="height:100%">
+        <view class="myapply_contain">
+          <block wx:for="{{myApplyArray}}">
+            <view wx:if="{{item.user_OpenID == user_OpenID}}" class="myapply_item">
+              <view style="display:flex;flex-direction:column;width:58vw">
+                <text style="color:gray;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.activity_title}}</text>
+                <view class="page_row">
+                  
+                  <progress class="activityprogress" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#c4e0b0" activeColor="#548235" stroke-width="10" active>
+                  </progress>
+                  {{item.activity_present_population}}/{{item.activity_population}}
+                </view>
+              </view>
+              <view wx:if="{{item.apply_state == 1 }}" style="background-color:rgb(227,241,217);border-radius: 3px;padding:1vw 4vw">
+              已被同意
+             </view>
+              <view wx:if="{{item.apply_state == 2 }}" style="background-color:rgb(227,241,217);border-radius: 3px;padding:1vw 4vw">
+              已被拒绝
+             </view>
+             <view wx:if="{{item.apply_state == 0 }}" style="background-color:rgb(227,241,217);border-radius: 3px;padding:1vw 4vw">
+              等待同意
+             </view>
+            </view>
+          </block>
+          <view wx:if="{{myApplyArray==null}}" style="width:100%;text-align:center;margin-top:50%;color:gray">这里空空如也~</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+<!-- 我参加的 -->
+    <swiper-item>
+    
+    </swiper-item>
+
+    <!-- 入团申请 -->
+    <swiper-item wx:if="{{canPublish}}">
+      <scroll-view scroll-y style="height:100%">
+        <view class="message_contain">
+          <block wx:for="{{joinMessageArray}}">
+            <view data-activityid="{{item.activity_id}}"
+            data-useravatarurl="{{item.user_avatarUrl}}"
+            data-nickname="{{item.user_nickName}}"
+            data-applyusermessage="{{item.apply_user_message}}"           
+            data-activitytitle="{{item.activity_title}}"
+            data-usergender="{{item.user_gender}}"
+            data-activityapplyid="{{item.activity_apply_id}}"            data-useropenid="{{item.user_OpenID}}"
+            
+              bindtap="tomessageInfo" class="join_message_item" bindtap="toMessageInfo">
+              <image src="{{item.user_avatarUrl}}" class="join_item_pic"></image>
+              <view class="join_item_content">
+                <view style="font-size:4vw">{{item.user_nickName}}</view>
+                <view style="margin-right: 2vw;color:gray;display:flex;flex-direction:row;justify-content:space-between">
+                  <text style="color:gray;white-space: nowrap;text-overflow:ellipsis;overflow:hidden;width:41vw">{{item.apply_user_message}}</text>
+                  <view wx:if="{{item.apply_state== '0'}}" style="display:flex">
+                    <view data-activityapplyid="{{item.advanced_players_activity_apply_id}}" catchtap="reject" data-index="{{index}}" style="margin-right: 3vw;color:black;border-radius:5px;padding:0.5vw 5vw;background-color:rgb(252,229,215)">拒绝</view>
+                    <view data-activityapplyid="{{item.advanced_players_activity_apply_id}}"  catchtap="apply" data-index="{{index}}" style="color:black;border-radius:5px;padding:0.5vw 5vw;background-color:rgb(227,241,217)">同意</view>
+                  </view>
+                  <view wx:if="{{item.apply_state == '1'}}">已同意</view>
+                  <view wx:if="{{item.apply_state == '2'}}">已拒绝</view>
+                </view>
+                <view style="color:gray;margin-top:0.5vw;font-size:24rpx;display:flex;flex-direction:row;justify-content:space-between;margin-right:2vw">
+                  <view style="color: gray">{{item.apply_time}}</view>
+                  <text style="text-align: right;width:30vw;margin-left:5vw;color:gray;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.activity_title}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view wx:if="{{joinMessageArray==null}}" style="width:100%;text-align:center;margin-top:50%;color:gray">这里空空如也~</view>
+        </view>
+      </scroll-view>
+      
+    </swiper-item >
+    <!-- 我发布的 -->
+    <swiper-item wx:if="{{canPublish}}">
+    
+    </swiper-item>
+    
+  </swiper>
+
+</view>

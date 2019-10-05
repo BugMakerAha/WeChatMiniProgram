@@ -1,0 +1,230 @@
+<no_saerch_nav showback page-name=""></no_saerch_nav>
+<view style="position:fixed;width:0;height:0" wx:if="{{shows}}"></view>
+<!-- Modal -->
+<!-- <view class="modal" wx:if="{{showModal}}" catchtap="closeModal"></view>
+<form bindsubmit="submit">
+  <view class="window" wx:if="{{showModal}}">
+    <view style="border-bottom:1px gray solid;width:100vw;padding:2vw 0;text-align: center">加入方式</view>
+    <radio-group name="radio" bindchange="radioChange">
+      <radio style="margin: 2vw 0 0 4vw" value="pay" checked>付款加入</radio>
+      <view class="dir_row" style="justify-content:center;width:100vw;margin-top: 4vw">
+        <view bindtap="pay_tap" data-idx='1' style="{{payChecked=='1'? 'color: red;border: red 1px solid;':''}}padding:1vw 4vw" class="{{enable==1?'pay_enable':'pay_disable'}} ">5000元/2年</view>
+
+        <view bindtap="pay_tap" data-idx="2" style="{{payChecked=='2'? 'color: red;border: red 1px solid;':''}}padding:1vw 4vw ;margin-left:6vw" class="{{enable==1? 'pay_enable': 'pay_disable'}} ">10000元/6年</view>
+      </view>
+      <view style="width:100vw;text-align:center;color:gray;font-size:3vw;border-bottom:1px whitesmoke solid;margin-top:2vw;padding-bottom:2vw">(请确定是否需求此服务，申请金付款后平台不予退回)</view>
+
+      <radio style="margin: 2vw 0 0 4vw" value="cdk">邀请码加入</radio>
+      <view class="dir_row" style="justify-content:center;width:100vw;margin-top: 4vw">
+        <input name="cdk" class="{{enable==2?'cdk_enable':'cdk_disable'}}" style="width:62vw;padding:1vw 3vw"></input>
+
+      </view>
+      <view style="width:100vw;text-align:center;color:coral;font-size:3vw;margin-top:2vw;padding-bottom:2vw">(为维护联盟生态环境，请谨慎使用邀请码)</view>
+    </radio-group>
+    <button form-type="submit" style="background-color:rgb(112,173,70);color:white;border-radius:0;width:100vw;line-height:2.3">提交申请</button>
+  </view>
+</form> -->
+<view>
+  <view class="join" bindtap="buttonCtrl">
+    <image animation="{{upanimation}}" src="/images/addall.png" style="width:7vw;height:7vw;position:absolute;z-index:1100"></image>
+  </view>
+  <image animation="{{btnItemAnimation[0]}}" style="box-shadow: 0 0 15px -3px rgb(251,229,215)" src="/images/director.png" bindtap="toPublishMeet" class="btn_item"></image>
+  <image animation="{{btnItemAnimation[1]}}" style="box-shadow: 0 0 15px -3px rgb(227,241,217)" src="/images/shares.png" bindtap="toPublishLogo" class="btn_item"></image>
+  <image animation="{{btnItemAnimation[2]}}" style="box-shadow: 0 0 15px -3px rgb(223,235,247)" src="/images/qudao.png" bindtap="toPublishResource" class="btn_item"></image>
+  <image animation="{{btnItemAnimation[3]}}" style="box-shadow: 0 0 15px -3px rgb(229,231,225)" src="/images/money-icon.png" bindtap="toPublishMoney" class="btn_item"></image>
+</view>
+<view style="position:relative;width:100vw;height:11vw">
+  <view style="position:absolute;height:1px;width:40vw;left:0;top:2vw;background-color:green"></view>
+  <image src="/images/verified.png" style="position:absolute;width:10vw;height:10vw;border:1vw solid white;left:44vw;margin-top:-6vw;border-radius:50%"></image>
+  <view style="position:absolute;height:1px;width:40vw;right:0;top:2vw;background-color:green"></view>
+  <view style="position:absolute;bottom:1vw;font-size: 3vw;width: 100vw;text-align: center;">昱奢联盟共享专区</view>
+</view>
+<view class="contain">
+  <view></view>
+  <view class='tabbar'>
+    <view class="tabbar_item {{swipeIndex==0 ? 'on' : ''}}" data-current='0' bindtap="swichNav">
+      <image class="tabbar_item_img" src="/images/money-icon.png"></image>
+      <view>资金池</view>
+      <image class="up" hidden="{{swipeIndex==0?false:true}}" src="/images/top.png"></image>
+    </view>
+    <view class="tabbar_item {{swipeIndex==1 ? 'on' : ''}}" data-current='1' bindtap="swichNav">
+      <image class="tabbar_item_img" src="/images/qudao.png"></image>
+      <view>资源共享</view>
+      <image class="up" hidden="{{swipeIndex==1?false:true}}" src="/images/top.png"></image>
+    </view>
+    <view class="tabbar_item {{swipeIndex==2 ? 'on' : ''}}" data-current='2' bindtap="swichNav">
+      <image class="tabbar_item_img" src="/images/shares.png"></image>
+
+      <view>品牌共享</view>
+      <image class="up" hidden="{{swipeIndex==2?false:true}}" src="/images/top.png"></image>
+    </view>
+    <view class="tabbar_item {{swipeIndex==3 ? 'on' : ''}}" data-current='3' bindtap="swichNav">
+      <image class="tabbar_item_img" src="/images/director.png"></image>
+      <view>私董会</view>
+      <image class="up" hidden="{{swipeIndex==3?false:true}}" src="/images/top.png"></image>
+    </view>
+  </view>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="overflow-y:hidden">
+    <!-- 资金池 -->
+    <swiper-item>
+      <view class="money_box" animation="{{curAnimation}}">
+        <view style="position: absolute;left:29vw;top:4vw;color:white">已有</view>
+        <view style="position: absolute;font-size: 5vw;letter-spacing:2vw;left:43vw;top:3vw">{{allmoney}}</view>
+        <view style="position: absolute;left:72vw;top:4vw;color:white">元可申请</view>
+        <image src="/images/money-box.png" style="width:78vw;height:10vw;margin-left:11vw"></image>
+      </view>
+      <view class="swiper1_top" animation="{{curAnimation}}">
+        <view class="swiper1_top_item {{itemIndex1==0 ? 'on' : ''}}" data-current1='0' bindtap="itemSwich1">投票项目</view>
+        <view style="width:1px;height:4vw;background-color:#dbdbdb"></view>
+        <view class="swiper1_top_item {{itemIndex1==1 ? 'on' : ''}}" data-current1='1' bindtap="itemSwich1">已处理项目</view>
+      </view>
+      <swiper style="height:100%;position: relative;z-index: 0" current="{{itemCurrent1}}" duration="300" bindchange="swiperItemChange1" bindtransition="swiperTrans">
+        <!-- 投票项目 -->
+        <swiper-item>
+          <view class="swiper1_contain" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend" style="overflow:scroll">
+            <view style="margin-top:25vw;flex:1;padding: 0 3vw">
+              <block wx:for="{{programingArray}}">
+                <view class="swiper1_item" bindtap="toProgramInfo">
+                  <image mode="aspectFill" class="swiper1_item_img" src="{{item.img}}"></image>
+                  <view style="margin-top:1vw">{{item.title}}</view>
+                  <view class="dir_row" style="margin-top:3vw;justify-content:space-around;color:gray">
+                    <view style="width:4vw;overflow:hidden">{{100-item.support/item.all*100}}</view>%
+                    <progress class="swiper1_progress" border-radius="8" percent="{{item.support/item.all*100}}" background-color="rgb(239,174,134)" activeColor="rgb(154,200,125)" stroke-width="10" active></progress>
+                    <view style="width:4vw;overflow:hidden">{{item.support/item.all*100}}</view>%
+                    <view>已投票：{{item.all}}人</view>
+                  </view>
+
+                </view>
+              </block>
+            </view>
+          </view>
+        </swiper-item>
+        <!-- 已处理项目 -->
+        <swiper-item>
+          <view style="overflow:scroll" class="swiper1_contain" bindtouchmove="itemTouchRightMove" bindtouchend="itemTouchRightEnd">
+            <view style="margin-top:25vw;flex:1;padding: 0 3vw">
+              <block wx:for="{{passedProgram}}">
+                <view class="swiper1-2_item" bindtap="toProgramInfo">
+                  <image mode="aspectFill" src="{{item.img}}" class="swiper1-2_item_img"></image>
+                  <view class="swiper1-2_item_content">
+                    <text style="font-size:3.5vw;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.title}}</text>
+                    <view>支持率：{{item.supportPercent}}%</view>
+                    <view>投票人数：{{item.peopleNum}}人</view>
+                    <view>状态：{{item.state}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper2_top">
+        <view class="swiper1_top_item {{itemIndex2==0 ? 'on' : ''}}" data-current2='0' bindtap="itemSwich2">资源列表</view>
+        <view style="width:1px;height:4vw;background-color:#dbdbdb"></view>
+        <view class="swiper1_top_item {{itemIndex2==1 ? 'on' : ''}}" data-current2='1' bindtap="itemSwich2">申请状态</view>
+      </view>
+      <swiper style="height:100%;position: relative;z-index: 0" current="{{itemCurrent2}}" duration="300" bindchange="swiperItemChange2" bindtransition="swiperTrans">
+        <swiper-item>
+          <view style="overflow:scroll" class="swiper1_contain" bindtouchmove="itemTouchLeftMove" bindtouchend="itemTouchLeftEnd">
+            <view style="margin-top:10vw;flex:1;padding: 0 3vw">
+              <block wx:for="{{resourceArray}}">
+                <view class="swiper2-1_item" bindtap="toResourseInfo">
+                  <image mode="aspectFill" class="swiper2-1_item_img" src="{{item.img}}"></image>
+                  <view style="margin-top:1vw">{{item.title}}</view>
+                  <view class="dir_row" style="margin-top:2vw;justify-content:space-between">
+                    <view style="color: gray;">{{item.resourceType}}</view>
+                    <view style="color:rgb(197,90,17);font-size: 3.5vw">立即申请</view>
+
+                  </view>
+
+                </view>
+              </block>
+            </view>
+          </view>
+        </swiper-item>
+        <swiper-item>
+        <!-- 已过期的资源共享 -->
+          <view style="overflow:scroll" class="swiper1_contain" bindtouchmove="itemTouchRightMove" bindtouchend="itemTouchRightEnd">
+            <view style="margin-top:11vw;flex:1;padding: 0 3vw">
+              <block wx:for="{{goneResource}}">
+                <view class="swiper2-2_item" bindtap="toResourseInfo">
+                  <image mode="aspectFill" src="{{item.img}}" class="swiper2-2_item_img"></image>
+                  <view class="swiper2-2_item_content">
+                    <text style="font-size:3.5vw;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.title}}</text>
+
+                    <view style="color:coral">{{item.resourceType}}</view>
+                    <view style="position:absolute;right:3vw;bottom:1vw;font-size:3.5vw;color:rgb(197,90,17)">已被申请</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </swiper-item>
+    <swiper-item>
+      <view style="overflow:scroll" class="swiper3_contain" bindtouchmove="itemTouchRightMove" bindtouchend="itemTouchRightEnd">
+        <view style="margin-top:2vw;flex:1;display:flex;flex-direction:row;flex-wrap:wrap">
+          <block wx:for="{{brandArray}}">
+            <view class="swiper3-1_item" bindtap="toLogoInfo">
+              <image mode="aspectFit" src="{{item.logo}}" class="swiper3-1_item_img"></image>
+              <text style="white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.name}}</text>
+              <view style="font-size:3.5vw;margin:3vw 0">立即申请</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="activity">
+        <!--活动一级容器-->
+        <!--二级会员认证-->
+        <block wx:for="{{meetArray}}" wx:key="meet_id">
+          <view data-index="{{index}}" data-meetid="{{item.meet_id}}" bindtap="toMeetInfo">
+            <view class="activity_container_{{item.meet_verified}}">
+              <view style="position: absolute;right: 5vw;margin-top: 46vw;">
+                <!--认证图标-->
+                <image wx:if="{{item.meet_verified==2}}" class="verified" src="/images/verified_yellow.png"></image>
+                <image wx:if="{{item.meet_verified==1}}" class="verified" src="/images/verified_blue.png"></image>
+                <image src="/images/alliance.png" class="verified"></image>
+                <!-- >活动图片<-->
+              </view>
+              <image mode="aspectFill" class="no_verified_activity" src="{{item.meet_img[0]}}"></image>
+
+              <view style="margin-top: -1vw">
+                <text class="activityinfo">{{item.meet_title}}</text>
+              </view>
+              <!--进度条-->
+              <view style="flex-direction:row;display:flex">
+                <progress wx:if="{{item.meet_verified == 2}}" class="activityprogress" border-radius="8" percent="{{item.meet_present_population/item.meet_population * 100}}" background-color="#ffe699" activeColor="#ffc000" stroke-width="10" active>
+                </progress>
+                <progress wx:if="{{item.meet_verified == 1}}" class="activityprogress" border-radius="8" percent="{{item.meet_present_population/item.meet_population * 100}}" background-color="#bdd7ee" activeColor="#3c8bce" stroke-width="10" active>
+                </progress>
+                <progress wx:if="{{item.meet_verified == 0}}" class="activityprogress" border-radius="8" percent="{{item.meet_present_population/item.meet_population * 100}}" background-color="#c4e0b0" activeColor="#548235" stroke-width="10" active>
+                </progress>
+                <view>
+                  <text class="progresstext">{{item.meet_present_population}}/{{item.meet_population}}人</text>
+                </view>
+                <view style="padding-top:2vw;position: absolute;right: 5vw;">
+                  <view class="distance">{{distance[index]}}</view>
+                </view>
+              </view>
+              
+
+            </view>
+
+          </view>
+        </block>
+
+
+        <!-->end
+        <-->
+      </view>
+    </swiper-item>
+  </swiper>
+
+
+
+</view>

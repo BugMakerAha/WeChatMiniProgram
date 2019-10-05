@@ -1,0 +1,14 @@
+<!--pages/activityApply/activityApply.wxml-->
+<no_saerch_nav page-name="申请加入 " showback></no_saerch_nav>
+<textarea bindinput="applyinput" value="{{apply_user_message}}" placeholder="填写申请信息" class="text_area" maxlength="280"></textarea>
+<text style="margin-left:5.5vw;font-size:4vw;color:gray">发起人同意后即可加入活动</text>
+<view wx:if="{{needPay}}" class="dir_row" style="align-items:center;margin: 1vw 10vw">
+  <image style="width:5vw" mode="widthFix" src="/images/radio.png"></image>
+  <view style="font-size: 4vw;margin-left:2vw">
+    活动费用
+  </view>
+  <view style="color:coral;font-size:5vw;margin-left:42vw">{{activity_detail.activity_payment}}</view>
+  <image style="width:5vw" mode="widthFix" src="/images/rmb.png"></image>
+</view>
+<view wx:if="{{needPay}}" style="width:100vw;display:flex;justify-content:center;font-size:3.5vw;color:gray;margin-top:3vw">( 活动费用暂由平台保管，若发起人未同意将会全额退还 )</view>
+<button type="primary" bindtap="sendapply" size="mini" style="margin: 3vw 3vw;display: block;padding: 1vw 0;font-size: 4.5vw">发送申请</button>

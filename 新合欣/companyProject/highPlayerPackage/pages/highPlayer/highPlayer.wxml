@@ -1,0 +1,47 @@
+<no_saerch_nav showback page-name="高级玩家社区"></no_saerch_nav>
+<view class="contain">
+  <scroll-view style="width:100%;height:100%;" scroll-y>
+    <view style="font-size:3vw;color:coral;padding:2vw">玩就是我们的信仰，喜欢玩，并把快乐与大家分享，在玩中成长，收获，做一个高级玩家，欢迎认同我们的小伙伴一起加入</view>
+    <image src="http://123.56.24.144:80/group1/M00/00/16/rBEVT11TwEWAAKY5AAWBZNrTsFE617.png" style="width:96%;padding:0 2vw;" mode="widthFix"></image>
+    <view style="color: black;font-size:3vw;width:100vw;text-align:center;margin:2vw 0">物以类聚，人以群分，选择不同的圈子成就不同的你</view>
+    <view style="padding: 2vw 0;color:green;font-size:4vw;width:90vw;text-align:center;margin:0 5vw 0vw 5vw;box-shadow: 0px 0 4px 0px green" bindtap="openModal">加入昱奢高级玩家社区</view>
+    <view style="height:15vw"></view>
+  </scroll-view>
+</view>
+
+<!-- Modal -->
+<view class="modal" wx:if="{{showModal}}" catchtap="closeModal"></view>
+<form bindsubmit="submit">
+  <view class="window" wx:if="{{showModal}}">
+    <view style="border-bottom:1px #d2d2d2 solid;width:100vw;padding:2vw 0;text-align: center">申请加入</view>
+    <view style="width:100%;display:flex;justify-content:center">
+      <view style="display:flex;justify-content:flex-end;flex-direction: column;width: max-content">
+        <view class="modal_item">姓名:
+          <input name="name" class="input_style"></input>
+        </view>
+        <view class="modal_item">电话:
+          <input name="tel" class="input_style"></input>
+        </view>
+        <view class="modal_item">QQ:
+          <input name="qq" class="input_style"></input>
+        </view>
+      </view>
+    </view>
+    <view style="border-bottom:1px #d2d2d2 solid;width:100vw;text-align: center"></view>
+    <radio-group name="radio" bindchange="radioChange">
+      <radio style="margin: 2vw 0 0 4vw" value="pay" checked>付款加入</radio>
+      <view class="dir_row" style="justify-content:center;width:100vw;margin-top: 4vw">
+        <view bindtap="pay_tap" data-idx='1' style="{{payChecked=='1'? 'color: red;border: red 1px solid;':''}}padding:1vw 4vw" class="{{enable==1?'pay_enable':'pay_disable'}} ">500元/2年</view>
+
+        <view bindtap="pay_tap" data-idx="2" style="{{payChecked=='2'? 'color: red;border: red 1px solid;':''}}padding:1vw 4vw ;margin-left:6vw" class="{{enable==1? 'pay_enable': 'pay_disable'}} ">1000元/6年</view>
+      </view>
+      <view style="width:100vw;text-align:center;color:gray;font-size:3vw;border-bottom:1px whitesmoke solid;margin-top:2vw;padding-bottom:2vw">(请确定是否需求此服务，申请金付款后平台不予退回)</view>
+      <radio style="margin: 2vw 0 0 4vw" value="cdk">邀请码加入</radio>
+      <view class="dir_row" style="justify-content:center;width:100vw;margin-top: 4vw">
+        <input name="cdk" class="{{enable==2?'cdk_enable':'cdk_disable'}}" style="width:62vw;padding:1vw 3vw"></input>
+      </view>
+      <view style="width:100vw;text-align:center;color:coral;font-size:3vw;margin-top:2vw;padding-bottom:2vw"></view>
+    </radio-group>
+    <button form-type="submit" style="background-color:rgb(112,173,70);color:white;border-radius:0;width:100vw;line-height:2.3">提交申请</button>
+  </view>
+</form>

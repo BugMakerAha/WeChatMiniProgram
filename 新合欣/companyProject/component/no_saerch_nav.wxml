@@ -1,0 +1,17 @@
+<view class="navbar" style='height:{{navH}}px'>
+  <view class="navbar-action-group" bindtap="navBack"  style="top:{{menutop}}px;height:{{menuButtonH}}px" wx:if="{{showback}}">
+   
+    <image src="/images/back.png"  class="navbar-action_item" ></image>
+    
+    
+    <!-- <block wx:else>
+<view src="images/26.png" name="back"   custom-class="navbar-action_item first" bind:click="navBack"></view>
+    </block> -->
+    
+  </view>
+  <view class='navbar-title' style="{{stylefir}};height:{{menuButtonH}}px;top:{{menutop}}px;display:flex;flex-direction:column">
+    <text style="font-size:17px">{{pageName}}</text>
+    <text style="{{stylesec}};position:relative;">{{pageNameSec}}</text>
+  </view>
+</view>
+

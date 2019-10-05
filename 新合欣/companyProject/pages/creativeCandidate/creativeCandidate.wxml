@@ -1,0 +1,28 @@
+<no_saerch_nav showback page-name=""></no_saerch_nav>
+<view>
+  <image src="/images/leaderbroad1.png" style="z-index:999;position:absolute;width:102vw;height:35vw;left:-1vw;margin-top:-1px" mode="aspectFill"></image>
+</view>
+<view class="contain">
+
+  <view class="dir_row" style="flex:1;height:0">
+    <view style="width:2vw;height:80vw;position:relative;background-color:rgb(52,149,34);border-radius:20px"></view>
+    <scroll-view scroll-y style="width:96vw;height:100%">
+      <view style="height:30vw"> </view>
+
+      <block wx:for="{{userList}}">
+        <view class="useritem">
+
+          <view style="font-size:5vw;margin-left:3vw">{{index+1}}</view>
+          <view style="display:flex;justify-content:center;margin-left: 5vw;">
+            <image wx:if="{{index==0}}" src="/images/king.png" style="width:6vw;height:4vw;position:absolute;margin-top:-3vw"></image>
+            <image src="{{item.usericon}}" class="usericon"></image>
+          </view>
+          <view class="dir_column" style="margin-left:4vw">
+            <view style="font-size:4vw">{{item.username}}</view>
+            <view style="font-size:3vw;color:gray">{{item.usercompany}}</view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

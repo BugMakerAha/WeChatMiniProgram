@@ -1,0 +1,74 @@
+<no_saerch_nav showback pageNameSec="社区会员:134" stylesec="font-size:13px" page-name="高级玩家社区"></no_saerch_nav>
+<!-- 浮动按钮 -->
+
+<view>
+  <view class="join" bindtap="buttonCtrl">
+    <image wx:if="{{hasNewMessage}}" src="/images/reddot.png" style="width:30px;height:30px;position:absolute;right:-8px;top:-8px"></image>
+    <image animation="{{upanimation}}" src="/images/more.png" style="width:7vw;height:7vw;position:absolute;z-index:1100"></image>
+  </view>
+  <view class="btn_item" bindtap="toPublish" animation="{{btnItemAnimation[0]}}">
+    <image class="btn_img" src="/images/activity.png"></image>
+    <view>发布</view>
+  </view>
+
+  <view bindtap="toMessage" class="btn_item" animation="{{btnItemAnimation[1]}}">
+    <image wx:if="{{hasNewMessage}}" src="/images/reddot.png" style="width:30px;height:30px;position:absolute;right:-8px;top:-8px"></image>
+    <image class="btn_img" src="/images/message.png"></image>
+    <view>我的</view>
+  </view>
+
+</view>
+
+<view class="swiper_top" bindtouchstart="touchStart">
+  <view class="swiper_top_item {{swipeIndex==0 ? 'on' : ''}}" data-current='0' bindtap="swichNav">社区活动</view>
+  <view style="width:1px;height:4vw;background-color:#dbdbdb"></view>
+  <view class="swiper_top_item {{swipeIndex==1 ? 'on' : ''}}" data-current='1' bindtap="swichNav">社区任务</view>
+</view>
+<swiper style="height:0;flex:1;position: relative;z-index: 0" current="{{currentTab}}" duration="300" bindchange="bindChange" bindtouchstart="touchStart">
+  <swiper-item>
+
+    <view style="overflow:scroll" bindscrolltoupper="refresh" class="swiper_contain">
+
+      <block wx:for="{{playerActivityArray}}">
+        <view class="activity_container" bindtap="toActivityInfo" data-activity_id="{{item.advanced_players_activity_id}}">
+
+          <image mode="aspectFill" class="no_verified_activity" src="{{item.activity_img[0]}}"></image>
+
+          <view style="margin-top: -1vw">
+            <text class="activityinfo">{{item.activity_title}}</text>
+          </view>
+          <!--进度条-->
+          <view style="flex-direction:row;display:flex">
+            <progress class="activityprogress" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}"  activeColor="green" stroke-width="10" active>
+            </progress>
+
+            <view>
+              <text class="progresstext">{{item.activity_present_population}}/{{item.activity_population}}人</text>
+            </view>
+
+          </view>
+
+
+        </view>
+      </block>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <!-- 社区任务 -->
+    <view style="overflow:scroll" class="swiper_contain">
+      <view style="margin-top:2vw;flex:1;padding: 0 3vw">
+        <block wx:for="{{missionArray}}">
+          <view class="swiper2-2_item" bindtap="toResourseInfo">
+            <image mode="aspectFill" src="{{item.img}}" class="swiper2-2_item_img"></image>
+            <view class="swiper2-2_item_content">
+              <text style="font-size:3.5vw;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.title}}</text>
+
+              <view style="color:coral">{{item.time}}</view>
+              <view style="position:absolute;right:3vw;bottom:1vw;font-size:3.5vw;color:rgb(197,90,17)">领取任务</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>

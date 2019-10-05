@@ -1,0 +1,32 @@
+<no_saerch_nav showback page-name="昱奢商业联盟">
+</no_saerch_nav>
+
+<form bindsubmit="submit">
+  <view class="window">
+    <view style="border-bottom:1px gray solid;width:100vw;padding:2vw 0;text-align: center">加入方式</view>
+    <radio-group name="radio" bindchange="radioChange">
+      <radio style="margin: 2vw 0 0 4vw" value="pay" checked>付款加入</radio>
+      <view class="dir_row" style="justify-content:center;width:100vw;margin-top: 4vw">
+        <view bindtap="pay_tap" data-idx='1' style="{{payChecked=='1'? 'color: red;border: red 1px solid;':''}}padding:1vw 4vw" class="{{enable==1?'pay_enable':'pay_disable'}} ">2000元/1年</view>
+
+        <view bindtap="pay_tap" data-idx="2" style="{{payChecked=='2'? 'color: red;border: red 1px solid;':''}}padding:1vw 4vw ;margin-left:6vw" class="{{enable==1? 'pay_enable': 'pay_disable'}} ">3000元/3年</view>
+      </view>
+      <view style="width:100vw;text-align:center;color:gray;font-size:3vw;border-bottom:1px whitesmoke solid;margin-top:2vw;padding-bottom:2vw;height:3vw"></view>
+
+      <radio style="margin: 2vw 0 0 4vw" value="cdk">邀请码加入</radio>
+      <view class="dir_row" style="justify-content:center;width:100vw;margin-top: 4vw">
+        <input name="cdk" class="{{enable==2?'cdk_enable':'cdk_disable'}}" style="width:62vw;padding:1vw 3vw"></input>
+
+      </view>
+      <view style="width:100vw;text-align:center;color:coral;font-size:3vw;margin-top:2vw;padding-bottom:2vw;height:9vw"></view>
+    </radio-group>
+    <button form-type="submit" style="background-color:rgb(112,173,70);color:white;border-radius:5;width:78vw;line-height:2">提交申请</button>
+  </view>
+</form>
+<view style="position:relative;height:10vw">
+  <image src="/images/service2.png" style="width:12vw;height:12vw;position:absolute;right:3vw;top:15vw"></image>
+  <button open-type="contact" show-message-card plain="true" style="border:none;width:12vw;height:12vw;position:absolute;right:3vw;top:15vw"></button>
+</view>
+<view style="margin:20vw 0 0 3vw;color:gray;font-size:3vw">· 支付后需进行企业认证或个体工商户认证</view>
+<view style="margin:2vw 0 0 3vw;color:gray;font-size:3vw">· 为维护联盟生态环境，请谨慎使用邀请码</view>
+<view style="margin:2vw 0 0 3vw;color:gray;font-size:3vw">· 请确定是否需求此服务，申请金付款后平台不予退回</view>

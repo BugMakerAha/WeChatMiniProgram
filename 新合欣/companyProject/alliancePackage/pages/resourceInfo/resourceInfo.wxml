@@ -1,0 +1,103 @@
+<no_saerch_nav showback page-name="资源信息"></no_saerch_nav>
+
+<view class="contain">
+  <scroll-view scroll-y style="height:100%">
+    <view class='head head_text'>
+      <image src='{{activity_leader_icon}}' class='head_image'></image>
+      <view class='head_item_right'>
+        <view>发起人：{{activity_leader}}</view>
+        <view class="head_right_bottom">
+          <view class="head_right_icontext">
+            <image wx:if="{{activity_verified != 0}}" src="/images/verified.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified != 0}}" class="head_right_bottom_text">昱奢共享联盟</view>
+          </view>
+          <view class="head_right_icontext">
+            <image wx:if="{{activity_verified == 2}}" src="/images/verified_yellow.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified == 2}}"   class="head_right_bottom_text">二级会员</view>
+            <image wx:if="{{activity_verified == 1}}" src="/images/verified_blue.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified == 1}}"   class="head_right_bottom_text">一级会员</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view style="margin-top:3vw;font-size:4vw;color:black">{{title}}</view>
+      <view style="margin-top:3vw;">互换条件：见面详谈</view>
+      <view style="margin-top:3vw;">详情介绍：南昌平安象湖现有一栋空置楼房，想要发挥价值，寻找各路需要场地的人群，交换条件面谈，联系方式：13979155332
+      </view>
+      <image src="{{img[0]}}" style="width:96vw;" mode="widthFix"></image>
+
+    </view>
+    <!-- 评论区域 -->
+    <view class="comment">
+      <view class="dir_row" style="align-items:center;font-size:3.5vw;color:gray">
+        <text>评论 {{comment_count}}</text>
+        <text style="margin-left:3vw">赞 {{good_count}}</text>
+        <!-- 
+          <image src="/images/comment.png" mode="widthFix" style="width:6.5vw;margin-left:55vw"></image>
+            
+          <image src="/images/good.png" mode="widthFix" style="width:9vw;margin-left:3vw"></image> -->
+      </view>
+      <block wx:for="{{commentArray}}">
+
+        <view class="comment_item">
+          <view class="dir_row" style="align-items:center">
+            <image src="{{item.usericon}}" style="border-radius: 50%;width:8vw;height:8vw"></image>
+            <view style="font-size: 3.5vw;color:gray;display:flex;flex-direction:column;margin-left:2vw">
+              <view>{{item.username}}</view>
+              <view style="color:black">{{item.commentcontent}}</view>
+
+            </view>
+          </view>
+          <view class="dir_row" style="font-size:3vw;color:gray;margin-top:3vw;align-items:center">
+            <view style="margin-left:10vw">{{item.commenttime}}</view>
+            <image src="/images/comment.png" mode="widthFix" style="width:5vw;margin-left:40vw"></image>
+            <view style="width:4vw">
+              {{item.commentcount}}
+            </view>
+            <image src="/images/good.png" mode="widthFix" style="width:5vw;margin-left:7vw"></image>
+            {{item.goodcount}}
+          </view>
+        </view>
+        <block wx:for="{{item.commentArray}}">
+
+          <view class="comment_item">
+            <view class="dir_row" style="align-items:center">
+              <image src="{{item.usericon}}" style="margin-left:10vw;border-radius: 50%;width:8vw;height:8vw"></image>
+              <view style="font-size: 3.5vw;color:gray;display:flex;flex-direction:column;margin-left:2vw">
+                <view>{{item.username}}</view>
+                <view style="color:black">{{item.commentcontent}}</view>
+
+              </view>
+              <!-- <image src="/images/good.png" mode="widthFix" style="width:6vw;margin-left:37vw"></image>
+              <view style="font-size:3vw;color:gray;">{{item.goodcount}}</view> -->
+            </view>
+            <view class="page_row" style="font-size:3vw;color:gray;margin-top:1vw;align-items:center">
+
+
+
+
+            </view>
+          </view>
+
+
+        </block>
+
+      </block>
+    </view>
+  </scroll-view>
+</view>
+<view class="footer">
+  <view class="footer_item">
+    <image src="/images/comment.png" style="width:5vw;height:5vw"></image>
+    <view style="margin-left:1vw">{{comment_count}}</view>
+  </view>
+  <view class="footer_item" style="margin-right:20vw">
+    <image src="/images/good.png" style="width:5vw;height:5vw"></image>
+    <view style="margin-left:1vw">{{good_count}}</view>
+  </view>
+  <view class="footer_item">
+    <image src="/images/shareicon.png" style="width:5vw;height:5vw"></image>
+    <view style="margin-left:1vw">分享</view>
+  </view>
+</view>

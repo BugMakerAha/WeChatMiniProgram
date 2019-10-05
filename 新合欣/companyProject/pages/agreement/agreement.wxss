@@ -1,0 +1,13 @@
+/* pages/agreement/agreement.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+}
+.contain{
+  padding: 0 3vw;
+  flex: 1;
+  overflow-y: scroll;
+}
+.text_style{
+  font-size:35rpx;
+}

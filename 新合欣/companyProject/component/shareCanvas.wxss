@@ -1,0 +1,7 @@
+/* component/shareCanvas.wxss */
+.mycanvas{
+  position: fixed;
+  left:-400px;
+  top:50px;
+  z-index: 999
+}

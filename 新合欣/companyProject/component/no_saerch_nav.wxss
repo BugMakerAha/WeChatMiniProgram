@@ -1,0 +1,37 @@
+.navbar {
+  background-color: #359422;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+   z-index: 999;
+}
+
+.navbar-title {
+  line-height:1.1 ;
+  display: flex;
+  position: absolute;
+  background-color: #359422;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 0;
+}
+
+.navbar-action-group {
+  position: absolute;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 98;
+}
+
+.navbar-action_item {
+  height: 80%;
+  width: 12px;
+  padding: 0 14px;
+  z-index: 99;
+  
+}

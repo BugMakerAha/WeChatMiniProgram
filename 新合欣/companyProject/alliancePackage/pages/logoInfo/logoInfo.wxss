@@ -1,0 +1,111 @@
+/* pages/programInfo/programInfo.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+  
+}
+.contain{
+  flex: 1;
+  height: 0
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* border-bottom: 2px solid whitesmoke; */
+  background-color: rgb(112, 172, 72);
+}
+
+.head_item_right {
+  padding-left: 1vw;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.head_image {
+  margin: 2vw 3vw;
+  border-radius: 50%;
+  width: 15vw;
+  height: 15vw;
+  background-color: white
+}
+
+.head_text {
+  font-size: 4vw;
+  color: white;
+}
+
+.head_right_icon {
+  width: 5vw;
+  height: 5vw;
+  margin-right: 1vw;
+}
+
+.head_right_icontext {
+  justify-content: left;
+  align-items: center;
+  padding: 1vw;
+  border-radius: 5px;
+  margin-right: 1.5vw;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(112, 172, 72);
+  width: 28vw;
+}
+
+.head_right_bottom {
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.head_right_bottom_text {
+  font-size: 3.3vw;
+}
+
+.swiper1_progress {
+  width: 45vw;
+}
+.content{
+  padding: 2vw;
+  font-size: 3.5vw;
+  color: gray;
+}
+.dir_row{
+  display: flex;
+  flex-direction: row
+}
+.dir_column{
+  display: flex;
+  flex-direction: column
+}
+.comment{
+  padding: 2vw;
+  width:100%;
+}
+.comment_item{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vw;
+  font-size: 4vw;
+  border-bottom: 1px solid whitesmoke;
+}
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 12vw;
+  align-items: center;
+  border-top: 1px solid whitesmoke;
+
+}
+.footer_item{
+  font-size: 3vw;
+  color: rgb(73, 73, 73);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

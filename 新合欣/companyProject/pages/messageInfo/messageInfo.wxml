@@ -1,0 +1,30 @@
+<no_saerch_nav page-name="我的消息" showback></no_saerch_nav>
+<view class='contain'>
+  <view class="top">
+    <image class="top_bianjiao" src="/images/index-2.png" style="-webkit-transform:rotate(-90deg);right:0"></image>
+    <image class="top_bianjiao" src="/images/index-2.png" style="left:0"></image>
+    <view>申请活动：{{activity_title}}</view>
+
+  </view>
+  <view class="join_message_item">
+    <image src="{{user_avatarUrl}}" class="join_item_pic"></image>
+    <view class="join_item_content">
+      <view style="font-size:4vw">{{user_nickName}}</view>
+
+
+      <text wx:if="{{user_gender == 1}}" style="color:gray;margin-top:1vw;white-space: nowrap;text-overflow:ellipsis;">性别：男</text>
+
+      <text wx:if="{{user_gender == 2}}" style="color:gray;margin-top:1vw;white-space: nowrap;text-overflow:ellipsis;">性别：女</text>
+
+    </view>
+
+  </view>
+  <view style="font-size:3vw;font-weight:100;margin:5vw 0 2vw 3vw">申请消息:</view>
+  <view style="padding:2vw;margin:0 3vw;width:90vw;background-color:white;height:30vw">
+    <text style="">{{apply_user_message}}</text>
+  </view>
+  <view style="display: flex;flex-direction: row;justify-content: center;">
+    <button bindtap="reject" hidden="{{ishandle}}" type="warn" size="mini" style="margin:4vw 2vw;width: 20vw;  background-color: rgb( 91 ,155 ,213);">拒绝</button>
+    <button  hidden="{{ishandle}}"  bindtap="apply" type="primary" size="mini" style="margin:4vw 2vw;width: 20vw; background-color: rgb(112,173,71)">同意</button>
+  </view>
+</view>

@@ -1,0 +1,70 @@
+<!--pages/allianceIntroduction/allianceIntroduction.wxml-->
+<view class="join" bindtap="toAllianceArea">
+<text style="line-height: 0.5">点击\n
+进入</text>
+
+</view>
+
+<no_saerch_nav showback page-name="互客共享联盟"></no_saerch_nav>
+<view class="contain">
+  <image src="/images/hukelianmeng1.png" mode="widthFix" class="img"></image>
+  <view class="block1">
+    <view class="title_font">
+      <image src="/images/greendot.png" style="width:4vw;height:4vw;margin: 0 2vw;"></image>共享发展资金池</view>
+    <image mode="widthFix" src="/images/hukelianmeng1.1.png" style="width:94vw;margin-left:3vw;margin-top: 8vw;"></image>
+    <view class="row" style="justify-content:space-around;width:94vw;margin-left:3vw">
+      <view class="text_block">公司资金周转困难？联盟成员一起帮你！</view>
+      <view class="text_block">公司扩张缺资金？联盟成员一起帮你！</view>
+      <view class="text_block">有好的项目想投资？联盟成员一起帮你！</view>
+    </view>
+  </view>
+  <view class="gray_line"></view>
+
+
+
+  <view class="block2">
+    <view class="title_font">
+      <image src="/images/greendot.png" style="width:4vw;height:4vw;margin: 0 2vw;"></image>联盟品牌对内共享</view>
+    <view style="width:100vw;text-align:center;position:relative;font-size:4vw;top:4vw">行业品牌赋能3000+</view>
+    <image src="/images/hukelianmeng2.2.png" mode="widthFix" class="img"> </image>
+  </view>
+  <view class="bottom_font">互客共享联盟通过品牌赋能众多行业同盟即互利共荣</view>
+  <view class="gray_line"></view>
+
+
+
+  <view class="block3">
+    <view class="title_font">
+      <image src="/images/greendot.png" style="width:4vw;height:4vw;margin: 0 2vw;"></image>互客私董会</view>
+    <view class="block_contain" style="padding:0 6vw;width:87vw">
+      <block wx:for="{{Array1}}">
+        <view class='block_item'>
+          <image src='{{item.src}}' class='block_item_img' style="width:8vw;height:8vw"></image>
+          <text class='block_item_text'>{{item.text}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="bottom_font">互客私董会通过实地走访联盟企业,进入企业学习交流</view>
+    <view class="gray_line"></view>
+  </view>
+
+
+
+  <view class="block3">
+    <view class="title_font">
+      <image src="/images/greendot.png" style="width:4vw;height:4vw;margin: 0 2vw;"></image>其他资源共享</view>
+    <view class="block_contain">
+      <block wx:for="{{Array2}}">
+        <view class='block_item'>
+          <image src='{{item.src}}' class='block_item_img'></image>
+          <text class='block_item_text'>{{item.text}}</text>
+        </view>
+
+      </block>
+    </view>
+    <view class="bottom_font">互客联盟成员可在平台内发送需求及可交换的资源</view>
+    <view class="gray_line"></view>
+  </view>
+  
+
+</view>

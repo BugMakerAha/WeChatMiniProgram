@@ -1,0 +1,102 @@
+<!--pages/sortUser/sortUser.wxml-->
+<view class="contain">
+    <no_saerch_nav pageName="昱奢高级玩家"></no_saerch_nav>
+    <view>
+    <image mode="widthFix" src="/images/index-1.png" class="top1"></image>
+  </view>
+    <view style="flex:1;height:0">
+        <scroll-view upper-threshold="0" scroll-y style='height:100%'>
+           
+            <view>
+                <image class="sortuser-1" src="/images/sortuser-1.png" bindtap="topublishActivity"  mode="widthFix"></image>
+                <image mode="widthFix" bindtap="toofficialpublishActivity" src="/images/sortuser-2.png" class="sortuser-2"></image>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+
+<!-- show modal-->
+<view class="modal-mask" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}" >
+  <view style="display:flex;align-items:center">
+    <image class="icon" mode='widthFix' src="/images/usericon.png"></image>
+    <view style="color:gray;font-size:4vw;margin-left:3vw">昱奢高级玩家</view>
+  </view>
+  <view style="font-size:4vw;padding-bottom: 1vw;margin: 2vw 2vw 1vw 2vw;border-bottom:1px solid gray">昱奢高级玩家联合各界知名商团为高端玩家量身打造一个优质的活动信息整合平台</view>
+  <view style="font-size:3.5vw;color:gray;margin-bottom:4vw;margin-left:2vw">只为尊享，我们不将就</view>
+  <button bindgetuserinfo="login" open-type="getUserInfo" class="loginbutton">请先登录</button>
+
+</view>
+
+<!-- show person certification -->
+<view class="modal-mask" wx:if="{{showPersonModal}}"></view>
+<view class="person_dialog_contain" wx:if="{{showPersonModal}}">
+  <view class=" person_dialog">
+    <view style="width:100%;border-bottom:1px #dfdfdf solid;display:flex;flex-direction:column;align-items:center">
+      <view style="font-size:4vw;margin: 3vw 0 1vw 0 ">个人用户通行认证</view>
+      <view style="color:gray;font-size:3.5vw;margin-bottom:1vw ">(昱奢平台仅对以下玩家开放，请进行相关认证)</view>
+    </view>
+    <view style="font-size:4vw;border-bottom:1px #dfdfdf solid">
+    <radio-group name="radio" bindchange="radiochange">
+      <view style="display:flex;flex-direction:row;justify-content:space-around;margin:5vw;padding-bottom: 3vw ">
+        <view style="display:flex;align-items:center">
+          <view style="margin-right:4vw ">政治精英</view>
+          <radio checked="true" value="政治精英"></radio>
+        </view>
+        <view style="display:flex;align-items:center">
+          <view style="margin-right:4vw ">经济精英</view>
+          <radio value="经济精英"></radio>
+        </view>
+      </view>
+      <view style="display:flex;flex-direction:row;justify-content:space-around;margin:5vw;padding-bottom: 3vw  ">
+        <view style="display:flex;align-items:center">
+          <view style="margin-right:4vw ">知识精英</view>
+          <radio value="知识精英"></radio>
+        </view>
+        <view style="display:flex;align-items:center">
+          <view style="margin-right:4vw ">公众人物</view>
+          <radio value="公众人物"></radio>
+        </view>
+      </view>
+      <view style="display:flex;flex-direction:row;justify-content:space-around;margin:5vw ">
+        <view style="display:flex;align-items:center">
+          <view style="margin-right:4vw ">艺术精英</view>
+          <radio value="艺术精英"></radio>
+        </view>
+        <view style="display:flex;align-items:center">
+          <view style="margin-right:4vw ">运动精英</view>
+          <radio value="运动精英"></radio>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+
+    <view style="color:gray;font-size:3vw;display:flex;position:relative">
+      <view style="display:flex;position:absolute;right:3vw;top:2vw" bindtap="toperson">查看认证标准
+        <image src="/images/problem.png" style="margin-left:1vw;width:4vw;height:4vw"></image>
+      </view>
+      <!-- 添加图片区域 -->
+      <view class="photo_box">
+
+        <view class="photo_contain">
+          <block wx:for="{{tempPhotoPath}}">
+            <view class="photo_item">
+              <image class="close2" src="/images/close2.png" bindtap="deletePhoto" data-index="{{index}}"></image>
+              <image class="photo_item_img" src="{{item}}" mode="aspectFit" bindtap="preview" data-index="{{index}}"></image>
+            </view>
+          </block>
+          <view bindtap="getPhoto" wx:if="{{canAddPhoto}}" class="photo_item" style="background-color: white;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+
+            <image src="/images/camera.png" style="width:7vw;height:7vw;border: 1px gray solid;padding: 3vw 4vw;border-radius: 6px;"></image>
+            请您上传相关证明
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="border-top:1px #dfdfdf solid;width:100%;display:flex;flex-direction:row">
+      <view style="text-align:center;flex:1;font-size:4vw;padding:3vw 0;border-right:1px #dfdfdf solid" bindtap="closePersonModal">返回逛逛</view>
+      <view bindtap="submitPerson" style="text-align:center;flex:1;font-size:4vw;padding:3vw 0;">提交材料</view>
+    </view>
+
+  </view>
+</view>

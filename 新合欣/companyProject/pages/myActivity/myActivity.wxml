@@ -1,0 +1,92 @@
+<no_saerch_nav page-name="我的活动" showback></no_saerch_nav>
+<view class='contain'>
+  <view class="search_contain">
+    <view class="search_bar" bindtap="searchFocus">
+      <image src="/images/search1.png" style="height:6vw;width:6vw"></image>
+      <input class="search_text " focus="{{searchFocus}}" confirm-type="search" bindconfirm="searchEvent" style="color:black;width:{{searchWidth}}vw" placeholder="搜索活动" placeholder-class="search_text" bindfocus="hasfocus" bindblur="losefocus"> </input>
+    </view>
+    <image bindtap="scan" src="/images/saoma.png" style="width:6.5vw;height:6.5vw;margin-left:3vw"></image>
+    <!-- <view style="font-size:4vw;width:14vw;text-align:center">搜索</view> -->
+  </view>
+  <view class='tapbar'>
+    <text class="text_youxiao {{swipeIndex==0 ? 'on' : ''}}" data-current='0' bindtap="swichNav">发布的活动</text>
+
+    <text class="text_shixiao {{swipeIndex==1 ? 'on' : ''}}" data-current='1' bindtap="swichNav">参加的活动</text>
+  </view>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
+    <swiper-item>
+      <view class='activity_contain'>
+        <block wx:for="{{publishedActivity}}">
+          <view class='activity_item'>
+            <view class="qrcode" wx:if="{{item.activity_state != 3&&item.activity_approve_state == 1}}">
+              <image src="/images/white-left.png" style="width:7vw;height:7vw;z-index:999;position:absolute"></image>
+              <image src="/images/qrcode.png" style="width:7vw;height:7vw"></image>
+            </view>
+            <!-- <image class='activity_item_pic' src='{{item.activity_img}}' mode="aspectFill"></image> -->
+            <view class='activity_item_content2'>
+              <view bindtap="toActivityInfo" data-activityid="{{item.activity_id}}" data-activitystate="{{item.activity_state}}">
+                <text style="width:80vw;margin-left:2.5vw;color:black;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden">{{item.activity_title}}</text>
+                <view class='page_row' style="margin-top: 1vw">
+                  <progress wx:if="{{item.activity_verified==2}}" class="activityprogress2" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#ffe699" activeColor="#ffc000" stroke-width="10" active>
+                  </progress>
+
+                  <progress wx:if="{{item.activity_verified==1}}" class="activityprogress2" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#bdd7ee" activeColor="#3c8bce" stroke-width="10" active>
+                  </progress>
+                  <progress wx:if="{{item.activity_verified==0}}" class="activityprogress2" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#c4e0b0" activeColor="#548235" stroke-width="10" active>
+                  </progress>
+                  <view style="margin-left:3vw;font-size: 3vw;color:gray">{{item.activity_present_population}}/{{item.activity_population}}</view>
+
+                </view>
+              </view>
+              <text style="position:absolute;right:5%;bottom:15%" wx:if="{{item.activity_state == 3&&item.activity_approve_state != 2}}">活动已失效</text>
+              <text style="position:absolute;right:5%;bottom:15%" wx:if="{{item.activity_approve_state == 0&&item.activity_state != 3}}">活动审核中</text>
+              <text style="position:absolute;right:5%;bottom:15%" wx:if="{{item.activity_approve_state == 2}}">审核未通过</text>
+              <view wx:if="{{item.activity_state != 3&&item.activity_approve_state==1}}" class="page_row fun_box2">
+                <view wx:if="{{item.activity_state != 3&&item.activity_approve_state==1}}" data-activityid="{{item.activity_id}}" data-activityleader="{{item.activity_leader}}" data-activityleadericon="{{item.activity_leader_icon}}" data-activityverified="{{item.activity_verified}}"
+                  class="fun_item2" style="" catchtap="toUpload">上传照片</view>
+                
+
+                <button wx:if="{{item.activity_state != 3&&item.activity_approve_state == 1}}" data-activityid="{{item.activity_id}}" data-activitytitle="{{item.activity_title}}" data-activityimg="{{item.activity_img}}" plain="true" open-type="share" class="fun_item2" style="border:none;border-left: 1px solid whitesmoke;line-height:1.333;border-radius:0;">点击拉人</button>
+                <view wx:if="{{item.activity_state != 3&&item.activity_approve_state == 1}}" data-activityid="{{item.activity_id}}" class="fun_item2" data-index="{{index}}" style="border-left: 1px solid whitesmoke;">签到情况</view>
+                <view wx:if="{{item.activity_state != 3&&item.activity_approve_state == 1}}" data-activityid="{{item.activity_id}}" class="fun_item2" catchtap="cancelActivity" data-index="{{index}}" style="border-left: 1px solid whitesmoke;">取消活动</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='activity_contain'>
+        <block wx:for="{{joinedActivity}}">
+
+          <view class='activity_item'>
+
+            <image data-activityid="{{item.activity_id}}" bindtap="toActivityInfo" class='activity_item_pic' src='{{item.activity_img[0]}}' mode="aspectFill"></image>
+            <view class='activity_item_content'>
+              <text style="width:50vw;white-space:nowrap;text-overflow: ellipsis;display:block;overflow:hidden" class="activityinfo">{{item.activity_title}}</text>
+              <view class='page_row'>
+                <progress wx:if="{{item.activity_verified==2}}" class="activityprogress" border-radius="8" percent="20" background-color="#ffe699" activeColor="#ffc000" stroke-width="10" active>
+                </progress>
+
+                <progress wx:if="{{item.activity_verified==1}}" class="activityprogress" border-radius="8" percent="20" background-color="#bdd7ee" activeColor="#3c8bce" stroke-width="10" active>
+                </progress>
+
+                <progress wx:if="{{item.activity_verified==0}}" class="activityprogress" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#c4e0b0" activeColor="#548235" stroke-width="10" active>
+                </progress>
+                <view style="margin-left:3vw;font-size: 3vw;color:gray">{{item.activity_present_population}}/{{item.activity_population}}</view>
+
+              </view>
+              <view class="page_row fun_box">
+                <view wx:if="{{item.activity_state != 3}}" class="fun_item" bindtap="toactivityPhoto" data-activityid="{{item.activity_id}}" data-activityleader="{{item.activity_leader}}" data-activityleadericon="{{item.user_avatarUrl}}" data-activityverified="{{item.activity_verified}}">查看活动照片</view>
+                <view wx:if="{{item.activity_state != 3}}" style="background-color: rgb(216, 216, 216);width:2px;height:4vw"></view>
+                <view wx:if="{{item.activity_state != 3}}" class="fun_item" style="">退出活动</view>
+                <view style="position:relative;left:36vw" wx:if="{{item.activity_state == 3}}">活动已失效</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </swiper-item>
+  </swiper>
+
+</view>

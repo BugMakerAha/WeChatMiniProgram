@@ -1,0 +1,10 @@
+<!--component/search.wxml-->
+<view class="navbar" style="{{'height: ' + navBarHeight}}">
+ <view style="{{'height: ' + statusBarHeight}}"></view>
+ <view class='search'>
+      <view class="search_arr">
+        <image class="searchicon" src='/images/search.png'></image>
+        <input class="bc_text" placeholder="请输入关键字" value="{{searchValue}}" />
+      </view>
+    </view>
+ </view>

@@ -1,0 +1,10 @@
+{
+ "usingComponents":{
+   "no_saerch_nav": "../../component/no_saerch_nav",
+   "shareCanvas":"../../component/shareCanvas"
+
+ },
+    "disableScroll":true,
+    "navigationBarTitleText": "活动详情"
+    
+}

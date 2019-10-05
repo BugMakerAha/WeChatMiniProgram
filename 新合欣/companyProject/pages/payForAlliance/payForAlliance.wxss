@@ -1,0 +1,37 @@
+.window{
+  font-size: 4vw;
+  background-color: white;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  
+}
+.pay_checked{
+  color: red;
+  border: red 1px solid;
+}
+.pay_enable{
+  border: gray 1px solid;
+  border-radius: 5px;
+  color: gray;
+}
+.pay_disable{
+ border: #d4d4d4 1px solid;
+ border-radius: 5px;
+ color: #d4d4d4;
+}
+.cdk_disable{
+  border: #d4d4d4 1px solid;
+ border-radius: 5px;
+ color: #d4d4d4;
+}
+.cdk_enable{
+  border:rgb(172,211,146) 1px solid;
+  border-radius: 5px;
+  color: black;
+}
+.dir_row {
+  display: flex;
+  flex-direction: row;
+}

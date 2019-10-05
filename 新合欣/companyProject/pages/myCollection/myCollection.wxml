@@ -1,0 +1,61 @@
+<no_saerch_nav page-name="我的收藏" showback></no_saerch_nav>
+<!-- <view>
+  <image src="/images/right-top.png" style="position: absolute;width: 6vw;height: 6vw;right:0;margin-top:-1px"></image>
+</view> -->
+<view class="search_contain">
+  <view class="search_bar" bindtap="searchFocus">
+    <image src="/images/search1.png" style="height:6vw;width:6vw"></image>
+    <input class="search_text " focus="{{searchFocus}}" confirm-type="search" bindconfirm="searchEvent" style="color:black;width:{{searchWidth}}vw" placeholder="搜索活动" placeholder-class="search_text" bindfocus="hasfocus" bindblur="losefocus"> </input>
+  </view>
+  <view style="font-size:4vw;width:14vw;text-align:center">搜索</view>
+</view>
+<view style="flex:1;height:0">
+  <scroll-view scroll-y style="height:100%">
+    <view class="activity">
+      <!--活动一级容器-->
+      <!--二级会员认证-->
+      <block wx:for="{{activity_info}}" wx:key="activity_id">
+        <view animation="{{animationInfoData[index]}}" data-index="{{index}}" data-activityid="{{item.activity_id}}" bindtap="toActivityInfo" bindlongpress="showModals">
+          <view class="activity_container_{{item.activity_verified}}">
+            <view>
+              <!--认证图标-->
+              <image wx:if="{{item.activity_verified==2}}" class="verified_{{item.activity_verified}}" src="/images/verified_yellow.png"></image>
+              <image wx:if="{{item.activity_verified==1}}" class="verified_{{item.activity_verified}}" src="/images/verified_blue.png"></image>
+              <!--活动图片-->
+              <image mode="aspectFill" class="no_verified_activity" src="{{item.activity_img[0]}}"></image>
+            </view>
+            <!--活动文字-->
+            <view>
+              <text class="activityinfo">{{item.activity_title}}</text>
+            </view>
+            <!--进度条-->
+            <view style="flex-direction:row;display:flex">
+              <progress wx:if="{{item.activity_verified == 2}}" class="activityprogress" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#ffe699" activeColor="#ffc000" stroke-width="10" active>
+              </progress>
+              <progress wx:if="{{item.activity_verified == 1}}" class="activityprogress" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#bdd7ee" activeColor="#3c8bce" stroke-width="10" active>
+              </progress>
+              <progress wx:if="{{item.activity_verified == 0}}" class="activityprogress" border-radius="8" percent="{{item.activity_present_population/item.activity_population * 100}}" background-color="#c4e0b0" activeColor="#548235" stroke-width="10" active>
+              </progress>
+              <view>
+                <text class="progresstext">{{item.activity_present_population}}/{{item.activity_population}}人</text>
+              </view>
+            </view>
+            <!--距离-->
+            <view style="padding-left:5%;padding-top:3%">
+              <view class="distance">{{distance[index]}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-->end
+      <-->
+    </view>
+  </scroll-view>
+</view>
+<!-- 删除弹窗 -->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="closeDialog"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <image class="delete_dialog" mode='widthFix' src="/images/delete_activity.png"></image>
+  <view style="position: fixed;width: 24vw;height: 13vw;left: 58vw;top: 50%;" bindtap="deleteActivity"></view>
+  <view style="position: fixed;width: 24vw;height: 13vw;left: 22vw;top: 50%;" bindtap="deleteAllActivity"></view>
+</view>

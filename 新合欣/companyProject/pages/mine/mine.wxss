@@ -1,0 +1,202 @@
+.page {
+  width: 100%;
+  height: 100%;
+}
+
+.contain{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.top1{
+    height: 20px;
+    width: 20px;
+    position:absolute;
+    right: 0;
+    margin-top: -1px;
+}
+/*
+上部分样式
+*/
+
+.top {
+  width: 100%;
+  height: 44vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bgimg {
+    
+  width: 100%;
+  height: 40%;
+  margin-top: -4px;
+  position: absolute
+}
+
+.usericon{
+  width: 20vw;
+  height: 20vw;
+  position: absolute;
+  margin-top: 15vw;
+  border-radius: 80px;
+  box-shadow: 0 0 5px 4px white;
+}
+
+.username{
+  position: absolute;
+  color: #999999;
+  margin-top: 39vw;
+  font-size: 4vw;
+}
+/*
+中间
+*/
+.middle {
+    position: absolute;
+  height: 21vw;
+  width: 100%;
+  margin-top: 7vw;
+}
+
+.middle_row{
+  width: 100%;
+  height: 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.middle_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.middle_txt_style{
+  font-size: 4vw;
+}
+
+.minemiddleimg{
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 5%;
+    right: 0;
+}
+/*
+下部分
+*/
+.bottom {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 40vw;
+  margin-left: 5%;
+  margin-bottom: 2vw;
+}
+
+.bottom_item{
+  width: 100%;
+  height: 12vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: relative;
+  z-index: 111;
+}
+
+.bottom_item_icon{
+  width: 9vw;
+  height: 8vw;
+  margin:  0 2vw 0 2vw;
+}
+
+.bottom_item_txt{
+  font-size: 4vw;
+  margin-right: 2vw;
+  border-bottom:2px solid #f2f2f2;
+  flex: 1  
+}
+
+.union{
+    width: 100%;
+    height: 7%;
+    position: absolute;
+    margin-top: 29vw;
+}
+
+.unionbutton{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 100%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    background-color: #359422;
+}
+
+.unionimg{
+    width: 100%;
+    height: 100%;
+
+}
+
+.verified{
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    padding-top: 2.5%;
+    margin-left: 55%;
+    z-index: 999;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  padding: 3vw 5vw;
+  width: 90vw;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+}
+
+.icon {
+  width: 13vw;
+}
+
+.loginbutton {
+  line-height: 2.3;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 4vw;
+  border-radius: 7px;
+  background-color: #359422;
+  color: white;
+}
+
+.bottomimg{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}

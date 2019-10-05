@@ -1,0 +1,43 @@
+<no_saerch_nav page-name="现场照片" showback="{{true}}"></no_saerch_nav>
+<view style="flex:1;height:0">
+  <scroll-view scroll-y style='height:100%'>
+    <view class='head head_text'>
+      <image src='{{activity_leader_icon}}' class='head_image'></image>
+      <view class='head_item_right'>
+        <view>发起人：{{activity_leader}}</view>
+        <view class="head_right_bottom">
+          <view class="head_right_icontext">
+            <image wx:if="{{activity_verified != 0}}" src="/images/verified.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified != 0}}" class="head_right_bottom_text">昱奢共享联盟</view>
+          </view>
+          <view class="head_right_icontext">
+            <image wx:if="{{activity_verified == 2}}" src="/images/verified_yellow.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified == 2}}"   class="head_right_bottom_text">二级会员</view>
+            <image wx:if="{{activity_verified == 1}}" src="/images/verified_blue.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified == 1}}"   class="head_right_bottom_text">一级会员</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="display:flex;flex-direction: row;">
+      <view class="photo_contain_left">
+        <block wx:for="{{photoArray}}" wx:if="{{index<photoArraylength}}">
+          <image wx:if="{{item != null}}" src="{{item}}" class="photo_item" mode="widthFix" bindtap="preview" data-index="{{index}}"></image>
+        </block>
+      </view>
+      <view class="photo_contain_right">
+        <block wx:for="{{photoArray}}" wx:if="{{index>= photoArraylength}}">
+          <image src="{{item}}" class="photo_item" mode="widthFix" bindtap="preview" data-index="{{index}}"></image>
+        </block>
+      </view>
+    </view>
+    
+  </scroll-view>
+  
+</view>
+<view class="bottom" style="margin-left:9vw">注:照片由活动主办方提供
+      <view style="margin-left: 9vw;display: flex;flex-direction: row;align-items: center;" > 照片有问题？
+       <image src="/images/hand.png" style="width:8vw;height:8vw"></image>
+      <image src="/images/jubao.png" bindtap="jubao" style="width:9vw;height:9vw"></image>
+      </view>     
+    </view>

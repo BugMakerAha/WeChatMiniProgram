@@ -1,0 +1,16 @@
+<no_saerch_nav page-name="官方QQ群" showback></no_saerch_nav>
+<view class='contain'>
+<image class="bianjiao" src="/images/white-left.png" style="margin-top:80vw"></image> 
+<image class="bianjiao" src="/images/right-top.png" style="right:0"></image>
+  <view class="code_mask" bindtap="previewCode"></view>
+  <image src="/images/QRcode.jpg" mode="widthFix" style="width:100vw"></image>
+  <view class="bottom_row">
+    <image src="/images/greendot.png" style="margin-right:3vw;width:3vw;height:3vw"></image>
+    粉丝官方活动
+  </view>
+  <image src="/images/official.png" class="official" mode="widthFix"></image>
+  <view class="bottom_text">如何玩？大咖？明星助唱？</view> 
+  <view class="bottom_text" style="margin:0 0 0 4vw">都由你定！</view> 
+  
+</view>
+

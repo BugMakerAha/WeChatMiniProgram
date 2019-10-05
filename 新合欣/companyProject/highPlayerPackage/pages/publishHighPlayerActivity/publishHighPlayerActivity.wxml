@@ -1,0 +1,102 @@
+<no_saerch_nav showback page-name="发布社区活动"></no_saerch_nav>
+<view class="content">
+  <scroll-view scroll-y style='height:100%'>
+    <view class="content_image">
+      <image bindtap="chooseImage" src="{{activity_img[0]}}" class="public_image" mode="aspectFit"></image>
+      <text wx:if="{{showtip}}" class="tip" style="color:#bfbfbf;font-size:15px;">点击图片可更换</text>
+    </view>
+    <view class="content_item">活动标题:
+      <input maxlength="40" bindinput="title" value="{{activity_title}}" style="margin-left:2vw"></input>
+    </view>
+    
+    <view class="content_item">参与人数:
+      <input bindinput="population" value="{{activity_population}}" placeholder="0" type="number" class="input_style"></input>人
+    </view>
+    <view class="content_item">报名时间:
+      <!-- <input type="number" class="input_style"></input> -->
+      <picker name="baoming" mode="date"  value="{{activity_start_date}}" start="2019-07-01" end="2030-01-01" bindchange="bindDateChange">
+        <view class="picker_style {{activity_start_date =='YYYY-MM-DD'?'text_gray':''}}">
+          {{activity_start_date}}
+        </view>
+      </picker>前
+    </view>
+    <view class="content_item">开始时间:
+      <picker mode="date" value="{{activity_date}}" start="2019-07-01" end="2030-01-01" bindchange="bindStartDateChange">
+        <view class="picker_style {{activity_date=='YYYY-MM-DD'?'text_gray':''}}">
+          {{activity_date}}
+        </view>
+      </picker>
+      <picker mode="time" value="{{activity_time}}" bindchange="bindStartTimeChange">
+        <view class="picker_style {{activity_time=='00:00'?'text_gray':''}}">
+          {{activity_time}}
+        </view>
+      </picker>
+    </view>
+    <view class="content_item">
+      结束时间:
+      <picker mode="date" value="{{activity_date_deadline}}" start="2019-07-01" end="2030-01-01" bindchange="bindEndDateChange">
+        <view class="picker_style {{activity_date_deadline =='YYYY-MM-DD'?'text_gray':''}}">
+          {{activity_date_deadline}}
+        </view>
+      </picker>
+      <picker mode="time" value="{{activity_time_deadline}}" bindchange="bindEndTimeChange">
+        <view class="picker_style {{activity_time_deadline=='00:00'?'text_gray':''}}">
+          {{activity_time_deadline}}
+        </view>
+      </picker>
+    </view>
+    <view class="content_item">集合地点:
+      <input bindinput="adress" value="{{activity_adress}}" style="margin-left:2vw;"></input>
+      <image bindtap="chooselocate" class="locate" mode="widthFix" src="/images/locate.png"></image>
+    </view>
+    <!-- <view class="content_item">活动费用:
+      <input bindinput="payment" value="{{activity_payment}}" placeholder="0" type="number" class="input_style"></input>/人
+    </view> -->
+    <view class="content_item" bindtap="toActivityEditor" style="align-items:center ;flex-direction:column">{{activityDetail}}
+
+
+
+
+    </view>
+    <!-- addtips -->
+    <block wx:for="{{activity_describe}}" wx:if="{{item.status}}">
+      <view class="content_item" style="background-color:rgb(251 229 215)">
+        <image bindtap="deleteItem" src="/images/close2.png" data-idx="{{index}}" class="close"></image>
+        <input bindinput="pushTitle" data-idx="{{index}}" value="{{item.title}}" style="width:27vw;text-align: center;"></input>:
+        <input bindinput="pushContent" data-idx="{{index}}" value="{{item.content}}" style="width:50vw;margin-left:2vw"></input>
+      </view>
+    </block>
+    <view style=" width:100vw;display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom: 2vw; ">
+      <image bindtap="additem" src="/images/addarea.png " style="width:6vw;height:6vw "></image>
+      <view style="font-size:3vw;color:#afabab ">点击增加条目</view>
+
+    </view>
+
+    <!-- 添加图片区域 -->
+    <view class="photo_box">
+      <view style="margin:2vw 0;font-size:3vw;color:gray">添加详情图片（不超过五张）</view>
+      <view class="photo_contain">
+        <block wx:for="{{tempPhotoPath}}">
+          <view class="photo_item">
+            <image class="close2" src="/images/close2.png" bindtap="deletePhoto" data-index="{{index}}"></image>
+            <image class="photo_item_img" src="{{item}}" mode="aspectFit" bindtap="preview" data-index="{{index}}"></image>
+          </view>
+        </block>
+        <view bindtap="getPhoto" wx:if="{{canAddPhoto}}" class="photo_item" style="background-color: whitesmoke;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+
+          <image src="/images/camera.png" style="width:10vw;height:10vw"></image>
+        </view>
+      </view>
+    </view>
+   
+
+  </scroll-view>
+</view>
+<view class="footer ">
+  <view data-activityimg="{{activity_img}}" data-activitytitle="{{activity_title}}" data-activitypopulation="{{activity_population}}" data-activitystartdate="{{activity_start_date}}" data-activitydate="{{activity_date}}" data-activitytime="{{activity_time}}"
+    data-activitydatedeadline="{{activity_date_deadline}}" data-activitytimedeadline="{{activity_time_deadline}}" data-activityadress="{{activity_adress}}" data-activitycontent="{{activity_content}}" data-activitydescribe="{{alternative}}" bindtap="topreviewActivity" class="footer_item " style="background-color: #548235 ">预览效果</view>
+  <view bindtap="publish" hidden="{{ishidden}}" class="footer_item " style="background-color: #ed7d31 ">确认发布</view>
+  <view hidden="{{!ishidden}}" class="footer_item " style="background-color: #ed7d31 ">发布中</view>
+</view>
+
+

@@ -1,0 +1,99 @@
+/* pages/uploadPhoto/uploadPhoto.wxss */
+
+page {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contain {
+  height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  width: 100vw;
+  padding-top: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera {
+  width: 7vw;
+  height: 7vw;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  height: 0;
+  flex-direction: row;
+  justify-content: center;
+  background-color: whitesmoke;
+  
+}
+
+.image_contain {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80vw;
+}
+
+.image_item {
+  margin: 2vw 1vw 0 1vw;
+  width: 38vw;
+  height: 23vw;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgb(217, 217, 217);
+}
+.mask{
+  position: absolute;
+   width: 38vw;
+  height: 23vw;
+  z-index: 100 ;
+  background-color: black;
+  opacity: 0.5;
+  
+}
+.bigmask{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 150;
+  top: 0;
+  left: 0;
+  
+}
+
+.close {
+  position: absolute;
+  width: 6vw;
+  height: 6vw;
+  margin-top: 0vw;
+  margin-left: 40%;
+  z-index: 200;
+}
+
+.submit_contain {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+.submit {
+  
+  text-align: center;
+  width: 30vw;
+
+}

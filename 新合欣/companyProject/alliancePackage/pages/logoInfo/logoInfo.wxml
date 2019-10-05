@@ -1,0 +1,108 @@
+<no_saerch_nav showback page-name="品牌信息"></no_saerch_nav>
+
+<view class="contain">
+  <scroll-view scroll-y style="height:100%">
+    <view class='head head_text'>
+      <image src='{{activity_leader_icon}}' mode="aspectFit" class='head_image'></image>
+      <view class='head_item_right'>
+        <view>发起人：{{activity_leader}}</view>
+        <view class="head_right_bottom">
+          <view class="head_right_icontext">
+            <image wx:if="{{activity_verified != 0}}" src="/images/verified.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified != 0}}" class="head_right_bottom_text">昱奢共享联盟</view>
+          </view>
+          <view class="head_right_icontext">
+            <image wx:if="{{activity_verified == 2}}" src="/images/verified_yellow.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified == 2}}"   class="head_right_bottom_text">二级会员</view>
+            <image wx:if="{{activity_verified == 1}}" src="/images/verified_blue.png" class="head_right_icon"></image>
+            <view wx:if="{{activity_verified == 1}}"   class="head_right_bottom_text">一级会员</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view style="margin-top:3vw;width:100%;display:flex;justify-content:center;align-items:center;flex-direction:column">
+      <image mode="aspectFit" style="width:27vw;height:16vw;border: 2px solid #e2e2e2;border-radius: 4px;padding: 2vw;" src="{{logo}}"></image>
+      <view style="font-size:3vw;color:black">{{logoname}}</view>
+      </view>
+      <view style="margin-top:3vw;">合作方式：可线下预约洽谈</view>
+      <view style="margin-top:3vw;">联系方式：400-088-6888</view>
+      <view style="margin-top:3vw;">品牌介绍：豚音游泳俱乐部是专业以传播游泳运动为主的培训机构，通过朋友间的口口相传，在过去的10年间，我们为上万名不同年龄，不同级别，不同程度的人提供了专业培训服务，我们遵循“快乐游泳”的理念，让更多人在愉快、轻松的氛围下学会游泳、认识游泳、亲近游泳
+      </view>
+      <image src="{{img[0]}}" style="width:96vw;" mode="widthFix"></image>
+      <image src="{{img[1]}}" style="width:96vw;" mode="widthFix"></image>
+
+    </view>
+    <!-- 评论区域 -->
+    <view class="comment">
+      <view class="dir_row" style="align-items:center;font-size:3.5vw;color:gray">
+        <text>评论 {{comment_count}}</text>
+        <text style="margin-left:3vw">赞 {{good_count}}</text>
+        <!-- 
+          <image src="/images/comment.png" mode="widthFix" style="width:6.5vw;margin-left:55vw"></image>
+            
+          <image src="/images/good.png" mode="widthFix" style="width:9vw;margin-left:3vw"></image> -->
+      </view>
+      <block wx:for="{{commentArray}}">
+
+        <view class="comment_item">
+          <view class="dir_row" style="align-items:center">
+            <image src="{{item.usericon}}" style="border-radius: 50%;width:8vw;height:8vw"></image>
+            <view style="font-size: 3.5vw;color:gray;display:flex;flex-direction:column;margin-left:2vw">
+              <view>{{item.username}}</view>
+              <view style="color:black">{{item.commentcontent}}</view>
+
+            </view>
+          </view>
+          <view class="dir_row" style="font-size:3vw;color:gray;margin-top:3vw;align-items:center">
+            <view style="margin-left:10vw">{{item.commenttime}}</view>
+            <image src="/images/comment.png" mode="widthFix" style="width:5vw;margin-left:40vw"></image>
+            <view style="width:4vw">
+              {{item.commentcount}}
+            </view>
+            <image src="/images/good.png" mode="widthFix" style="width:5vw;margin-left:7vw"></image>
+            {{item.goodcount}}
+          </view>
+        </view>
+        <block wx:for="{{item.commentArray}}">
+
+          <view class="comment_item">
+            <view class="dir_row" style="align-items:center">
+              <image src="{{item.usericon}}" style="margin-left:10vw;border-radius: 50%;width:8vw;height:8vw"></image>
+              <view style="font-size: 3.5vw;color:gray;display:flex;flex-direction:column;margin-left:2vw">
+                <view>{{item.username}}</view>
+                <view style="color:black">{{item.commentcontent}}</view>
+
+              </view>
+              <!-- <image src="/images/good.png" mode="widthFix" style="width:6vw;margin-left:37vw"></image>
+              <view style="font-size:3vw;color:gray;">{{item.goodcount}}</view> -->
+            </view>
+            <view class="page_row" style="font-size:3vw;color:gray;margin-top:1vw;align-items:center">
+
+
+
+
+            </view>
+          </view>
+
+
+        </block>
+
+      </block>
+    </view>
+  </scroll-view>
+</view>
+<view class="footer">
+  <view class="footer_item">
+    <image src="/images/comment.png" style="width:5vw;height:5vw"></image>
+    <view style="margin-left:1vw">{{comment_count}}</view>
+  </view>
+  <view class="footer_item" style="margin-right:20vw">
+    <image src="/images/good.png" style="width:5vw;height:5vw"></image>
+    <view style="margin-left:1vw">{{good_count}}</view>
+  </view>
+  <view class="footer_item">
+    <image src="/images/shareicon.png" style="width:5vw;height:5vw"></image>
+    <view style="margin-left:1vw">分享</view>
+  </view>
+</view>

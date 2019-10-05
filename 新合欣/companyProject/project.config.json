@@ -1,0 +1,85 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.1",
+	"appid": "wxac6cdbc6c652d8f1",
+	"projectname": "company",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": 0,
+					"name": "alliancePackage/pages/allianceArea/allianceArea",
+					"pathName": "alliancePackage/pages/allianceArea/allianceArea",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "highPlayerPackage/pages/highPlayer/highPlayer",
+					"pathName": "highPlayerPackage/pages/highPlayer/highPlayer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "highPlayerPackage/pages/playerArea/playerArea",
+					"pathName": "highPlayerPackage/pages/playerArea/playerArea",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/activityApply/activityApply",
+					"pathName": "pages/activityApply/activityApply",
+					"query": "activity_id=244",
+					"scene": null
+				}
+			]
+		}
+	}
+}

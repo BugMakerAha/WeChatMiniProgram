@@ -1,0 +1,84 @@
+<!--pages/activityInfo/activityInfo.wxml-->
+<view class='contain'>
+  <no_saerch_nav page-name="活动详情" showback="{{true}}"></no_saerch_nav>
+  <view style="flex:1;height:0">
+    <scroll-view scroll-y style='height:100%'>
+      <image src="/images/left-bottom.png" class="bianjiao" style="position:absolute;margin: 50vw 0 0 0;"></image>
+      <image src="/images/right-top.png" class="bianjiao" style="top:61px;right:0"></image>
+      <image src="{{activity_img}}" mode="aspectFill" class="top_image"></image>
+      <view class='head head_text'>
+        <image src='{{activity_leader_icon}}' class='head_image'></image>
+        <view class='head_item_right'>
+          <view>发起人：{{activity_leader}}</view>
+          <view class="head_right_bottom">
+            <view class="head_right_icontext">
+              <image src="/images/verified.png" class="head_right_icon"></image>
+              <view class="head_right_bottom_text">互客联盟会员</view>
+            </view>
+            <view class="head_right_icontext">
+              <image src="/images/verified_yellow.png" class="head_right_icon"></image>
+              <view class="head_right_bottom_text">企业认证</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='body body_text'>
+        <view class="body_func_box">
+          <view class='body_func_contain'>
+            <view class='body_func_item  first'>
+              <image src="/images/qiandao.png" class="body_func_img"></image>
+              <view class=' body_fun_text'>我要签到</view>
+            </view>
+            <view class='body_func_item'>
+              <image src="/images/photoshare.png" class="body_func_img" style="width:5.5vw;height:5vw"></image>
+              <view class=' body_fun_text'>活动照片</view>
+            </view>
+          </view>
+        </view>
+        <view class='body_item'>活动标题：{{activity_title}}</view>
+        <view class='body_item'>活动人数：{{activity_population}}人
+          <progress background-color="#c4e0b0" activeColor="#548235" stroke-width="10" percent='{{activity_percent}}' class="body_progress"></progress>{{activity_present_population}}/{{activity_population}}
+        </view>
+        <view class='body_item'>拼团成员：
+          <!-- 
+         <block wx:for="{{persons}}">
+            <image style='width:10vw;height:10vw;border-radius: 50%;margin-left:2vw' src='{{item}}'></image>
+          </block>
+        -->
+          <image style='width:10vw;height:10vw;border-radius: 50%;margin-left:2vw' src='{{activity_leader_icon}}'></image>
+        </view>
+
+        <view class="body_item">报名时间：{{activity_start_date}}前</view>
+        <view class='body_item'>开始时间：{{activity_date}} {{activity_time}} </view>
+        <view class="body_item">结束时间：{{activity_date_deadline}} {{activity_time_deadline}}</view>
+        <view class='body_item'>集合地点：{{activity_adress}}</view>
+        <!-- 额外标签栏 -->
+        <block wx:for="{{activity_describe}}" wx:if="{{item.title!=''&&item.content!=''&&item.status}}">
+          <view class="body_item">{{item.title}}：{{item.content}}
+          </view>
+        </block>
+
+      </view>
+      <view class="body_item" style="display:flex;flex-direction:column;align-items:center">
+        <view style="padding: 0 3vw;olor: gray;font-size:3.5vw;border-bottom:1px solid #dfdfdf;margin-top:1vw">
+          活动介绍
+        </view>
+        <editor id="editor" class="ql-container" read-only bindready="oneditorready"></editor>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='foot'>
+    <view class='foot_item_left'>
+      <view class="foot_item">
+        <image src="/images/uncollected.png" class="foot_item_img"></image>
+        收藏
+      </view>
+      <view class="foot_item">
+        <image src="/images/laren.png" class="foot_item_img" style="width: 7vw;height: 7vw;"></image>
+        <button class="sharebutton">帮忙拉人</button>
+      </view>
+      <image src="/images/xx.png" style="position:absolute;width:8vw;height:12vw;margin-left: 30vw;"></image>
+    </view>
+    <view bindtap="backPreview" data-activityid="{{activity_id}}" class='foot_item_right'>退出预览</view>
+  </view>
+</view>

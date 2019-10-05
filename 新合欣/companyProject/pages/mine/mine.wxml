@@ -1,0 +1,70 @@
+<view class='contain'>
+  <no_saerch_nav pageName="昱奢高级玩家"></no_saerch_nav>
+  <view>
+    <image class='bgimg' mode="widthFix" src='/images/minebg.png'></image>
+  </view>
+  <view style="flex:1;height:0;position:relative">
+    <scroll-view scroll-y style="height:100%">
+      <!-- 头像以及背景 -->
+      <view class='top'>
+
+        <!--
+         <view>
+          <image mode="widthFix" src="/images/index-1.png" class="top1"></image>
+        </view>
+        -->
+        <button open-type="getUserInfo" bindgetuserinfo="locallogin" class="usericon" style="border:none;z-index:999" plain></button>
+        <image class='usericon' src='{{user_avatarUrl}}'></image>
+        <text class='username'>{{user_nickName}}</text>
+      </view>
+      <!-- 中部横向菜单栏 -->
+      <view class='middle'>
+        <view class='middle_row'>
+          <view bindtap="tomyCollection" class='middle_item'>
+            <view>{{user_activity_fav_count}}</view>
+            <view class='middle_txt_style'>活动收藏</view>
+          </view>
+          <view bindtap="tomyActivity" class='middle_item'>
+            <view>{{user_activity_detail_count}}</view>
+            <view class='middle_txt_style'>我的活动</view>
+          </view>
+          <view bindtap="tomyMessage" class='middle_item'>
+             <image wx:if="{{user_apply_count>0}}" src="/images/reddot.png" style="width:28px;height:28px;position:absolute;right:40px;top:-15px"></image>
+            <view>{{user_apply_count}}</view>
+            <view class='middle_txt_style'>我的消息</view>
+          </view>
+        </view>
+        <view style='width:100%;height:2vw;background-color: #f2f2f2;'></view>
+      </view>
+      <view class="union">
+        <view style="position:absolute;width:50vw;height:100%"  bindtap="toallianceIntroduction"></view>
+        <view style="position:absolute;width:50vw;height:100%;right:0"  bindtap="toHighPlayer"></view>
+        <image class="unionimg" mode="widthFix" src="/images/unionimg.png"></image>
+      </view>
+      <!-- 底部竖向菜单栏 -->
+      <view class='bottom'>
+        <button style="border:none;position:absolute;top:23vw;height:13vw;width:100%;z-index:222" plain="true" open-type="contact"></button>
+        <block wx:for='{{bottomMenuArray}}'>
+          <view class='bottom_item' bindtap="bottomMenuClick" wx:for-index="index" data-index="{{index}}">
+            <image src='{{item.iconRes}}' class='bottom_item_icon'></image>
+            <view class='bottom_item_txt'>{{item.txt}}</view>
+          </view>
+        </block>
+      </view>
+      <view style="font-size:2.5vw;width:100%;text-align:center;bottom: 0;position:relative;color:gray;height:10vw">版本号：{{banbenhao}}</view>
+    </scroll-view>
+  </view>
+  <image class="bottomimg" src="/images/bottomimg.png" mode="widthFix"></image>
+</view>
+<!-- show modal-->
+<view class="modal-mask" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view style="display:flex;align-items:center">
+    <image class="icon" mode='widthFix' src="/images/usericon.png"></image>
+    <view style="color:gray;font-size:4vw;margin-left:3vw">昱奢高级玩家</view>
+  </view>
+  <view style="font-size:4vw;padding-bottom: 1vw;margin: 2vw 2vw 1vw 2vw;border-bottom:1px solid gray">昱奢高级玩家联合各界知名商团为高端玩家量身打造一个优质的活动信息整合平台</view>
+  <view style="font-size:3.5vw;color:gray;margin-bottom:4vw;margin-left:2vw">只为尊享，我们不将就</view>
+  <button bindgetuserinfo="login" open-type="getUserInfo" class="loginbutton">请先登录</button>
+
+</view>
