@@ -1,0 +1,38 @@
+<!--pages/mySignIn/mySignIn.wxml-->
+
+<view class="top dir_column">
+  <view style="padding:3vw 0;font-size:5vw;text-align:center">当前WIFI:{{tips}}</view>
+  <view wx:if="{{refreshing||havesign}}" style="height:12vw;width:100vw;display:flex;align-items:center">
+    <image style="height:12vw;width:100vw" wx:if="{{refreshing}}" mode="aspectFit" src="http://p5.qhimg.com/t012be171115495ffb2.gif"></image>
+    <view class="dir_row" style="width:100vw;height:12vw;padding:0 2vw;border-top:1px solid whitesmoke;" wx:if="{{havesign}}">
+      <view class="dir_column" style="flex:4;justify-content:space-around">
+        <view style="">{{currentSignIn.signInName}}</view>
+        <view style="font-size:3vw;color:gray">{{currentSignIn.signInTime}}</view>
+      </view>
+
+      <button plain class="dir_column top_item" bindtap="addtoList" style="flex:1">
+        <image src="/images/addlist2.png" class="top_icon"></image>
+        <view class="top_text">加入考勤</view>
+      </button>
+      <view style="width:1px;height:12vw;background-color:whitesmoke"></view>
+      <button plain class="dir_column top_item" bindtap="signIn" style="flex:1">
+        <image src="/images/signicon.png" class="top_icon" style="width:6vw;height:6vw"></image>
+        <view class="top_text">快速签到</view>
+      </button>
+    </view>
+  </view>
+  <view class="dir_row" style="border-top:1px solid whitesmoke">
+    <button bindtap="changeWifi" plain style="text-align:center;padding:2vw 0;flex:1;border-right:1px solid whitesmoke">更换WIFI</button>
+    <button bindtap="refresh" plain style="text-align:center;padding:2vw 0;flex:1;">刷新</button>
+  </view>
+</view>
+
+<view style="font-size:3vw;margin:1vw 2vw">我的考勤</view>
+<view class="content">
+
+  <button plain style="text-align:left;flex:1;border:none;border-radius:0" wx:for="{{signInList}}" class="sign_item_box">
+    <view class="sign_item">
+      <view>{{item.signInName}}</view>
+    </view>
+  </button>
+</view>

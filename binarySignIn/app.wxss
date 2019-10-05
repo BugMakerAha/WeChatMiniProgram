@@ -1,0 +1,15 @@
+/**app.wxss**/
+
+view{
+  font-weight: 300;
+  color: black
+}
+
+.dir_column{
+  display: flex;
+  flex-direction: column;
+}
+.dir_row{
+  display: flex;
+  flex-direction: row
+}
