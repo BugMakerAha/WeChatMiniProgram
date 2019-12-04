@@ -8,9 +8,26 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
+      success: function (res) {
+        console.log(res)
+        wx.request({
+          url: 'http://47.97.153.38:8080/BinaryStudio/handleLogin/getOpenID',
+          data: res.code,
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          method: "post",
+
+
+          success: function (res) {
+            console.log(res)
+          },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
     })
     // 获取用户信息
     wx.getSetting({

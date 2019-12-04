@@ -1,0 +1,8 @@
+<allUseCom>
+</allUseCom>
+<view >
+  <view wx:for="{{signInList}}" class="dir_row">
+     <view>{{item[2]}}</view>
+     <view>{{item[1]}}</view>
+  </view>
+</view>

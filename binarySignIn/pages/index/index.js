@@ -12,7 +12,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     usericon: "/images/usericon.png",
     topTip: "登录后可体验全部功能",
-    showModal:false
+    showModal: false
 
 
   },
@@ -61,6 +61,7 @@ Page({
   },
   login: function(e) {
     console.log(e)
+    
     if (e.detail.userInfo) {
       //成功获取用户信息
       app.globalData.userInfo = e.detail.userInfo

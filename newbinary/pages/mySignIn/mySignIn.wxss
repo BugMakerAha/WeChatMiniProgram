@@ -1,0 +1,65 @@
+/* pages/mySignIn/mySignIn.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+}
+
+.content {
+  background-color: white;
+  flex: 1;
+  height: 0;
+  overflow: scroll;
+  border-top: 1px solid whitesmoke;
+}
+.sign_item_box {
+  width: 100vw
+}
+.sign_item {
+  padding: 3vw 0;
+  margin: 0 2vw;
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+
+.bg_gray{
+  background-color: whitesmoke
+}
+.top_item{
+  justify-content: space-around;
+  align-items: center;
+}
+.top_icon{
+  width:6vw;
+  height: 6vw
+}
+.top_text{
+  font-weight: 100;
+  font-size: 3vw
+}
+
+.button-hover[plain] {
+  background-color: rgb(250, 250, 250);
+  color: black;
+}
+button[plain]{
+  background-color: white;
+  border:none;
+}
+button{
+  padding: 0;
+  margin: 0;
+  line-height:1.3;
+  
+  border-radius:0
+}
